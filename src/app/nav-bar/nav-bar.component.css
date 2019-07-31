@@ -1,0 +1,27 @@
+.nav li {
+    padding: 0px;
+    display: inline;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    /* display: flex; */
+    flex-direction: row;
+}
+
+.navbarCss {
+    background-color: #479761 !important;
+}
+
+
+/* a.logout:hover {
+    border-color: teal;
+    border-style: solid;
+    border-width: 1px;
+} */
+
+
+/* a.username:hover {
+    text-decoration: none;
+} */

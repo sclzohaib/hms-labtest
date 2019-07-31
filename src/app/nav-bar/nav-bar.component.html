@@ -1,0 +1,25 @@
+<nav class="navbar navbarCss" style="padding:0px;">
+  <div class="container-fluid" style="background-color:#479761">
+      <div class="navbar-header">
+          <a class="navbar-brand" style="color:white;font-weight: bold;text-align: center">BARKHIA HOSPITAL</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+
+          <a *ngIf="isHide" class="navbar-brand">
+              <li>UserName: {{userName}}</li>
+          </a>
+          <a *ngIf="isHide" class="navbar-brand" href="mainscreen" routerLink="mainscreen" routerLinkActive="active">
+
+              <li>MainScreen</li>
+
+          </a>
+          <div *ngIf="isHide">
+              <a class="navbar-brand logout" href="#">
+                  <li (click)="clearCache()">logOut</li>
+              </a>
+
+          </div>
+      </ul>
+
+  </div>
+</nav>
