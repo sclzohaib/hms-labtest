@@ -14,7 +14,7 @@
    }">
             <div class="ui-g ui-fluid">
                 <hr style="height:2px;width:100%;background-color:#479761;" />
-                <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveNormalvalue(normalvalue)">
+                <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveNormalvalue(normalvalue);myForm.resetForm();">
 
                     <!--Normal Values Field-->
 
@@ -32,7 +32,7 @@
 
                     <p-footer>
                         <button type="submit" class="backBtnStyle" pButton icon="pi pi-check" label="Save"></button>
-                        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+                        <button type="button" style="margin-left:10px" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
                     </p-footer>
 
                 </form>
