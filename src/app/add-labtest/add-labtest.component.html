@@ -1,53 +1,50 @@
+<p-dialog header="Lab Test" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }" [minX]="70" [style]="{ float: 'top', 'overflow-wrap': 'break-word' }" style="overflow-wrap: break-word"
+    [positionTop]="null" [maximizable]="true" [baseZIndex]="10000" [closeOnEscape]="true" [closable]="true">
+
+    <div class="ui-g-12">
 
 
-                    
- <p-dialog header="Lab Test" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }" [minX]="70" [style]="{ float: 'top', 'overflow-wrap': 'break-word' }" style="overflow-wrap: break-word"
-[positionTop]="null" [maximizable]="true" [baseZIndex]="10000" [closeOnEscape]="true" [closable]="true">
-
-<div class="ui-g-12">
-  
-
-  <p-card header="ADD LAB TEST" [style]="{
+        <p-card header="ADD LAB TEST" [style]="{
     width: '100%',
     'font-size': '20px',
     'text-align': 'center',
     color: 'green'
   }">
-      <div class="ui-g ui-fluid">
-          <hr style="height:2px;width:100%;background-color:green;" />
-          <form style="width:100%;">
+            <div class="ui-g ui-fluid">
+                <hr style="height:2px;width:100%;background-color:green;" />
+                <form style="width:100%;">
 
-            <div class="ui-g">
-              <div class="ui-md-2 ui-lg-2"></div>
-              <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                  <div class="ui-inputgroup">
-                      <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Department<i style="color: red">*</i></span>
-                      <p-dropdown [options]="cities1" filter="true" [style]= "{width:'370px',height:'35px'}"></p-dropdown>
-                  </div>
-              </div>
-          </div>
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Department<i style="color: red">*</i></span>
+                                <p-dropdown filter="true" [style]="{width:'370px',height:'35px'}"></p-dropdown>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="ui-g">
-                  <div class="ui-md-2 ui-lg-2"></div>
-                  <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                      <div class="ui-inputgroup">
-                          <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Lab Test Name<i style="color: red">*</i></span>
-                          <input type="text" pInputText />
-                      </div>
-                  </div>
-              </div>
-             
-              
-             
-                
-    </form>
-    
-  </div>
-</p-card>
-</div>
+                    <div class="ui-g">
+                        <div class="ui-md-2 ui-lg-2"></div>
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                            <div class="ui-inputgroup">
+                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Lab Test Name<i style="color: red">*</i></span>
+                                <input type="text" pInputText />
+                            </div>
+                        </div>
+                    </div>
 
-<p-footer>
-  <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
-  <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
-</p-footer>
+
+
+
+                </form>
+
+            </div>
+        </p-card>
+    </div>
+
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
 </p-dialog>

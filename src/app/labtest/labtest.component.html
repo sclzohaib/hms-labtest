@@ -1,41 +1,34 @@
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
         <button pButton type="button" label="Back" class="backBtnStyle" style="margin-left: 14%;
-    margin-bottom: 1%;
+    margin-bottom: -3%;
     height: 35px;
     width: 30%;
     width: 50%;"></button>
     </div>
 </div>
 <div class="ui-g-12">
-
     <p-card header="LAB TEST" [style]="{
   'font-size': '20px',
-
     'text-align': 'center',
-          width: '100%',
-  color: '#479761'
+    width: '100%',
+  color: '#479761',
+  'margin-bottom':'20px'
 }">
 
 
 
         <div class="ui-g ui-fluid">
             <hr style="height:2px;width:100%;background-color:#479761; margin-top: 0px" />
-
-
-
             <div class="ui-lg-8 ui-md-8 ui-sm-12">
-
-
                 <form style="width:100%;">
-
                     <!-- Lab Test field -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-7 ui-lg-7 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
-            Lab Test</span>
+                  Lab Test</span>
                                 <input type="text" pInputText />
 
 
@@ -50,7 +43,7 @@
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-            Department</span>
+                  Department</span>
                                 <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                                 <app-department></app-department>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
@@ -66,7 +59,7 @@
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
-            Sub Test<i style="color: red">*</i></span>
+                  Sub Test<i style="color: red">*</i></span>
                                 <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                                 <app-sub-test></app-sub-test>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
@@ -79,7 +72,7 @@
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px;font-weight: bold;">
-            Unit</span>
+                  Unit</span>
                                 <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                                 <app-unit></app-unit>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
@@ -94,7 +87,7 @@
                         <div class="ui-g-8 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-            Normal Value</span>
+                  Normal Value</span>
                                 <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                                 <app-normal-value></app-normal-value>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
@@ -108,7 +101,7 @@
                         <div class="ui-md-7 ui-lg-7 ui-sm-12">
 
                             <button pButton type="button" label="SAVE" class="backBtnStyle">
-        </button>
+              </button>
 
                         </div>
                     </div>

@@ -12,7 +12,7 @@
       }">
             <div class="ui-g ui-fluid">
                 <hr style="height:2px;width:100%;background-color:#479761;" />
-                <form style="width:100%;" (ngSubmit)="saveSubtest(subtestObj)" #refform="ngForm">
+                <form style="width:100%;" (ngSubmit)="saveSubtest(subtestObj);refform.resetForm()" #refform="ngForm">
                     <!--Sub Test Field-->
                     <div class="ui-g">
                         <div class="ui-md-2 ui-lg-2"></div>
@@ -32,7 +32,7 @@
                         <button type="submit" class="backBtnStyle" pButton icon="pi pi-check" label="Save"></button>
 
                         <!-- Close button -->
-                        <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+                        <button type="button" pButton icon="pi pi-close" style="margin-left:10px" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
                     </p-footer>
                 </form>
             </div>
