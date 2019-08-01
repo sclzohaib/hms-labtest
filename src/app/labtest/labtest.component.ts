@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
+
 @Component({
   selector: 'app-labtest',
   templateUrl: './labtest.component.html',
@@ -8,6 +9,8 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 })
 export class LabtestComponent implements OnInit {
   cities1: SelectItem[];
+
+
 
 
   constructor() { }
@@ -22,6 +25,6 @@ export class LabtestComponent implements OnInit {
       {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
   ];
   }
- 
+
 
 }
