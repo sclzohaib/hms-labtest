@@ -17,6 +17,9 @@ import { AddLabtestComponent } from './add-labtest/add-labtest.component';
 import { SubTestComponent } from './sub-test/sub-test.component';
 import { UnitComponent } from './unit/unit.component';
 import { NormalValueComponent } from './normal-value/normal-value.component';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,14 +34,17 @@ import { NormalValueComponent } from './normal-value/normal-value.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     DropdownModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CardModule,
     ButtonModule,
     DialogModule,
-    InputTextModule
-    
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule
+
   //  AccordionModule
   ],
   providers: [],

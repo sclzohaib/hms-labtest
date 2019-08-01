@@ -1,19 +1,24 @@
+import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Component, OnInit } from '@angular/core';
+import { Department } from './Department';
 
-@Component({
+@Component ({
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
   display: boolean = false;
-  constructor() { }
+  department:Department = new Department();
+  constructor(private _addService: AddReportDataService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+  showDialog() {
+    this.display = true;
   }
-  
-
-    showDialog() {
-        this.display = true;
-    }
+  saveDepartment(value) {
+    this._addService.addDepartment(value).subscribe((res => {
+      console.log(res);
+    }))
+  }
 }
