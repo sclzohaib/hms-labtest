@@ -1,4 +1,4 @@
-<a><i (click)="showDialog()" class="pi pi-plus" style="margin-left: 10px;font-size: 30px;color:#479761"></i></a>
+<a><i (click)="showDialog()" class="pi pi-plus" style="margin-left: 10px;font-size: 30px;color:#479761;cursor: pointer"></i></a>
 
 
 
@@ -17,7 +17,7 @@
    }">
             <div class="ui-g ui-fluid">
                 <hr style="height:2px;width:100%;background-color:#479761;" />
-                <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveDepartment(department)">
+                <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveDepartment(department);myForm.reset()">
 
                     <!--Department Field-->
 

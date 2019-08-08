@@ -44,9 +44,11 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                   Department</span>
-                                <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-department></app-department>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
+                                <p-dropdown [options]="departments" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName"  filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                           
+                                    <!--Get Event on department insertion-->
+                                <app-department (valueChange)='getDepartment()'></app-department>
+                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
                             </div>
                         </div>
@@ -60,9 +62,9 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
                   Sub Test<i style="color: red">*</i></span>
-                                <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-sub-test></app-sub-test>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
+                                <p-dropdown [options]="subTest" name="sub_test" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <app-sub-test (valueChange)='getSubTest()'></app-sub-test>
+                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
                             </div>
                         </div>
                     </div>
@@ -73,9 +75,9 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px;font-weight: bold;">
                   Unit</span>
-                                <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-unit></app-unit>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
+                                <p-dropdown [options]="unit" name="unit" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <app-unit (valueChange)="getUnit()"></app-unit>
+                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
                             </div>
 
@@ -88,9 +90,9 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                   Normal Value</span>
-                                <p-dropdown [options]="cities1" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-normal-value></app-normal-value>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761"></i>
+                                <p-dropdown [options]="normalValue" name="normalValue" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <app-normal-value (valueChange)="getNormalValue()"></app-normal-value>
+                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
                             </div>
                         </div>

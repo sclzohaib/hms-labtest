@@ -24,4 +24,16 @@ export class AddReportDataService {
   public addUnits(unit: Object): Observable<Object> {
     return this.http.post(environment.baseurl + "api/unit/", unit);
   }
+  public getDepartment(): Observable<any>{
+    return this.http.get(environment.baseurl+"api/department/");
+  }
+  public getSubtest():Observable<any>{
+    return this.http.get(environment.baseurl+"api/subtest/");
+  }
+  public getUnit():Observable<any>{
+    return this.http.get(environment.baseurl+"api/unit/")
+  }
+  public getNormalValue():Observable<any>{
+    return this.http.get(environment.baseurl+"api/normalvalue/")
+  }
 }

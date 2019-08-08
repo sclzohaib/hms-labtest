@@ -1,5 +1,5 @@
 import { AddReportDataService } from "./../Services/add-report-data.service";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output, EventEmitter } from '@angular/core';
 import { Subtest } from './Subtest';
 
 @Component({
@@ -8,10 +8,11 @@ import { Subtest } from './Subtest';
   styleUrls: ['./sub-test.component.css']
 })
 export class SubTestComponent implements OnInit {
-
+  @Output() valueChange = new EventEmitter();
   display: boolean = false;
   // labtest object
   subtestObj: Subtest = new Subtest();
+ 
   constructor(private _addserivice: AddReportDataService) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class SubTestComponent implements OnInit {
     console.log(value);
     this._addserivice.addSubtest(value).subscribe((res => {
       console.log("this is the response", res)
+      this.valueChange.emit();
     }))
   }
 }
