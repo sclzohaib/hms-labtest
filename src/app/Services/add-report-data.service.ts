@@ -27,6 +27,9 @@ export class AddReportDataService {
   public getDepartment(): Observable<any>{
     return this.http.get(environment.baseurl+"api/department/");
   }
+  public getDepartmentByID(id): Observable<any>{
+    return this.http.get(environment.baseurl+"api/department/"+id);
+  }
   public getSubtest():Observable<any>{
     return this.http.get(environment.baseurl+"api/subtest/");
   }
@@ -35,5 +38,8 @@ export class AddReportDataService {
   }
   public getNormalValue():Observable<any>{
     return this.http.get(environment.baseurl+"api/normalvalue/")
+  }
+  public editDepartment(id,obj:any):Observable<any>{
+    return this.http.put(environment.baseurl+"api/department/"+id,obj);
   }
 }

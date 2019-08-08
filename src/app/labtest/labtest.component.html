@@ -40,15 +40,16 @@
 
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
+                        <div class="ui-md-7 ui-lg-7 ui-sm-12">
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                  Department</span>
+                                     Department</span>
+                                     <!-- <label></label> -->
                                 <p-dropdown [options]="departments" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName"  filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                            
-                                    <!--Get Event on department insertion-->
-                                <app-department (valueChange)='getDepartment()'></app-department>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
+                  <!--Get Event on department insertion-->
+                                <app-department (valueChange)='getDepartment()' [editDepartment]="departmentName"></app-department>
+                                
 
                             </div>
                         </div>
