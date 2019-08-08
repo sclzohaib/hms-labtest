@@ -26,6 +26,9 @@ export class LabtestComponent implements OnInit {
     this.getNormalValue();
   }
 
+
+  
+
   getDepartment() {
     this.departments = [];
     this._addService.getDepartment().subscribe(dept=>{
