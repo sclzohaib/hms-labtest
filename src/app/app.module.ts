@@ -20,6 +20,7 @@ import { NormalValueComponent } from './normal-value/normal-value.component';
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReportTableComponent } from './labtest/report-table/report-table.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddLabtestComponent,
     SubTestComponent,
     UnitComponent,
-    NormalValueComponent
+    NormalValueComponent,
+    ReportTableComponent
   ],
   imports: [
     BrowserModule,

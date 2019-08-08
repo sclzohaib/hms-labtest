@@ -21,7 +21,7 @@
         <div class="ui-g ui-fluid">
             <hr style="height:2px;width:100%;background-color:#479761; margin-top: 0px" />
             <div class="ui-lg-8 ui-md-8 ui-sm-12">
-                <form style="width:100%;">
+                <form style="width:100%;" #myForm="ngForm">
                     <!-- Lab Test field -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
@@ -44,9 +44,9 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                   Department</span>
-                                <p-dropdown [options]="departments" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName"  filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                           
-                                    <!--Get Event on department insertion-->
+                                <p-dropdown [options]="departments" required name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+
+                                <!--Get Event on department insertion-->
                                 <app-department (valueChange)='getDepartment()'></app-department>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
@@ -62,7 +62,8 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
                   Sub Test<i style="color: red">*</i></span>
-                                <p-dropdown [options]="subTest" name="sub_test" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <p-dropdown [options]="subTest" required [(ngModel)]="subtestName" name="sub_test" filter="true" [style]="{width:'350px',height:'35px'}">
+                                </p-dropdown>
                                 <app-sub-test (valueChange)='getSubTest()'></app-sub-test>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
                             </div>
@@ -75,7 +76,8 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px;font-weight: bold;">
                   Unit</span>
-                                <p-dropdown [options]="unit" name="unit" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <p-dropdown [options]="unit" name="unit" required [(ngModel)]="unitName" filter="true" [style]="{width:'350px',height:'35px'}">
+                                </p-dropdown>
                                 <app-unit (valueChange)="getUnit()"></app-unit>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
@@ -90,7 +92,7 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                   Normal Value</span>
-                                <p-dropdown [options]="normalValue" name="normalValue" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
+                                <p-dropdown [options]="normalValue" required [(ngModel)]="normalvalueName" name="normalValue" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
                                 <app-normal-value (valueChange)="getNormalValue()"></app-normal-value>
                                 <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
 
@@ -100,15 +102,12 @@
                     <!-- Save Button -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-7 ui-lg-7 ui-sm-12">
+                        <div class="ui-md-3 ui-lg-3 ui-sm-12">
 
-                            <button pButton type="button" label="SAVE" class="backBtnStyle">
+                            <button pButton type="button" [disabled]="myForm.invalid" label="Add" (click)="showReport()" class="backBtnStyle">
               </button>
-
                         </div>
                     </div>
-
-
                 </form>
             </div>
 

@@ -1,3 +1,4 @@
+import { Department } from "./../department/Department";
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { AddReportDataService } from "./../Services/add-report-data.service";
@@ -15,6 +16,10 @@ export class LabtestComponent implements OnInit {
   unit: SelectItem[];
   normalValue : SelectItem[];
   departmentName;
+  subtestName;
+  normalvalueName;
+  unitName;
+  generateReport = [];
 
 
   constructor(private _addService: AddReportDataService) { }
@@ -74,5 +79,15 @@ getNormalValue(){
 }
   showSelectedDept(){
     console.log("haan bhai men select hogyaaaaa haaaan",this.departmentName)
+  }
+  showReport(){
+     let obj = {
+       departmetName : this.departmentName
+     }
+     obj["subtestName"] = this.subtestName;
+     obj['normalvalueName'] = this.normalvalueName;
+     obj["unitName"] = this.unitName;
+    this.generateReport.push(obj);
+    console.log("==================================",this.generateReport);
   }
 }
