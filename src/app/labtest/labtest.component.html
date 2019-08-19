@@ -15,13 +15,10 @@
   color: '#479761',
   'margin-bottom':'20px'
 }">
-
-
-
         <div class="ui-g ui-fluid">
             <hr style="height:2px;width:100%;background-color:#479761; margin-top: 0px" />
             <div class="ui-lg-8 ui-md-8 ui-sm-12">
-                <form style="width:100%;">
+                <form style="width:100%;" #myForm="ngForm">
                     <!-- Lab Test field -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
@@ -29,43 +26,37 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
                   Lab Test</span>
-                                <input type="text" pInputText />
-
-
+                                <input type="text" pTooltip="Enter Labtest Name" tooltipPosition="top" style="text-align: center" pInputText name="labtestName" placeholder="Labtest Name" required (input)="changed($event)" />
                             </div>
                         </div>
                     </div>
-
                     <!-- Department Field -->
-
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-7 ui-lg-7 ui-sm-12">
+                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
-                                     Department</span>
-                                     <!-- <label></label> -->
-                                <p-dropdown [options]="departments" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName"  filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                           
-                  <!--Get Event on department insertion-->
+                                <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">Department<i
+                    style="color: red">*</i></span>
+                                <!-- <label></label> -->
+                                <p-dropdown [options]="departments" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName" filter="true" [style]="{width:'350px',height:'35px'}" pTooltip="Select Department Name" tooltipPosition="top" tooltipEvent="hover"
+                                    placeholder="Select Deparment">
+                                </p-dropdown>
+                                <!--Get Event on department insertion-->
                                 <app-department (valueChange)='getDepartment()' [editDepartment]="departmentName"></app-department>
-                                
-
                             </div>
                         </div>
                     </div>
-
-
                     <!-- Sub Test Field -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-8 ui-lg-8 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
-                  Sub Test<i style="color: red">*</i></span>
-                                <p-dropdown [options]="subTest" name="sub_test" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-sub-test (valueChange)='getSubTest()'></app-sub-test>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
+                                <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">SubTest<i
+                    style="color: red">*</i></span>
+                                <p-dropdown [options]="subTest" required [(ngModel)]="subtestName" name="subtest" filter="true" [style]="{width:'350px',height:'35px'}" pTooltip="Select Subtest Name" tooltipPosition="top" tooltipEvent="hover" placeholder="Select Subtest">
+                                </p-dropdown>
+                                <app-sub-test (valueChange)='getSubTest()' [editSubtest]="subtestName"></app-sub-test>
+
                             </div>
                         </div>
                     </div>
@@ -76,12 +67,14 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px;font-weight: bold;">
                   Unit</span>
-                                <p-dropdown [options]="unit" name="unit" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-unit (valueChange)="getUnit()"></app-unit>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
+                                <p-dropdown [options]="unit" name="unit" required [(ngModel)]="unitName" filter="true" [style]="{width:'350px',height:'35px'}" pTooltip="Select Unit Name" tooltipPosition="top" tooltipEvent="hover" placeholder="Select Unit">
+
+                                </p-dropdown>
+                                <app-unit (valueChange)="getUnit()" [editUnittest]="unitName">
+
+                                </app-unit>
 
                             </div>
-
                         </div>
                     </div>
                     <!-- Normal Values Field -->
@@ -91,9 +84,10 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:37%;font-size:15px;font-weight: bold;">
                   Normal Value</span>
-                                <p-dropdown [options]="normalValue" name="normalValue" filter="true" [style]="{width:'350px',height:'35px'}"></p-dropdown>
-                                <app-normal-value (valueChange)="getNormalValue()"></app-normal-value>
-                                <i class="pi pi-cog" style="font-size: 30px;color:#479761;cursor: pointer"></i>
+                                <p-dropdown [options]="normalValue" required [(ngModel)]="normalvalueName" name="normalValue" filter="true" [style]="{width:'350px',height:'35px'}" pTooltip="Select Normal value" tooltipPosition="top" tooltipEvent="hover" placeholder="Select Normal value"></p-dropdown>
+
+                                <app-normal-value (valueChange)="getNormalValue()" [editnormalValue]="normalvalueName">
+                                </app-normal-value>
 
                             </div>
                         </div>
@@ -101,20 +95,30 @@
                     <!-- Save Button -->
                     <div class="ui-g ui-fluid">
                         <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-7 ui-lg-7 ui-sm-12">
-
-                            <button pButton type="button" label="SAVE" class="backBtnStyle">
+                        <div class="ui-md-3 ui-lg-3 ui-sm-12">
+                            <button pButton type="button" [disabled]="myForm.invalid" label="Add" (click)="showReport()" class="backBtnStyle">
               </button>
-
                         </div>
                     </div>
-
-
                 </form>
             </div>
-
         </div>
-
-
     </p-card>
+</div>
+
+
+<div class="ui-lg-12 ui-md-12 ui-sm-12">
+    <app-report-table [generateReport]="generateReport" [sendReport]="sendReport" [labtestName]="labtestName" [deptName]="deptName">
+    </app-report-table>
+</div>
+
+
+
+<div class="ui-g ui-fluid">
+    <div class="ui-md-4 ui-lg-4"></div>
+    <div class="ui-md-4 ui-lg-4 ui-sm-12">
+        <button pButton type="button" [disabled]=!generateReport.length label="SAVE REPORT" (click)="postReport()" class="backBtnStyle">
+    </button>
+    </div>
+
 </div>
