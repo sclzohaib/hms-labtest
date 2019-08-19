@@ -1,5 +1,7 @@
+import { Report } from "./report";
+import { NormalValue } from "./../normal-value/NormalValue";
 import { Department } from "./../department/Department";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
@@ -20,16 +22,32 @@ export class LabtestComponent implements OnInit {
   normalvalueName;
   unitName;
   generateReport = [];
+  sendReport = [];
+  labtestName;
+  deptName;
+
+   reportObj: Report;
+
+
 
 
   constructor(private _addService: AddReportDataService) { }
 
   ngOnInit() {
+    this.reportObj=new Report();
     this.getDepartment();
     this.getSubTest();
     this.getUnit();
     this.getNormalValue();
+
+
   }
+
+
+changed(e)
+{
+  this.labtestName=e.target.value;
+}
 
   getDepartment() {
     this.departments = [];
@@ -45,9 +63,9 @@ export class LabtestComponent implements OnInit {
   }
   getSubTest(){
     this.subTest = [];
-    this._addService.getSubtest().subscribe(subtest=>{
-      console.log(subtest);
-      subtest.map(s=>{
+    this._addService.getSubtest().subscribe(res=>{
+      console.log("=======>",res);
+      res.map(s=>{
         this.subTest.push({
           label: s.subtestName,
           value: s
@@ -66,7 +84,8 @@ getUnit(){
     });
   });
 }
-getNormalValue(){
+getNormalValue()
+{
   this.normalValue = [];
   this._addService.getNormalValue().subscribe(normalvalue=>{
     normalvalue.map(nv=>{
@@ -78,16 +97,40 @@ getNormalValue(){
   });
 }
   showSelectedDept(){
-    console.log("haan bhai men select hogyaaaaa haaaan",this.departmentName)
+    this.deptName  = this.departmentName.departmentName;
+    console.log("haan bhai men select hogyaaaaa haaaan",this.deptName)
   }
   showReport(){
-     let obj = {
-       departmetName : this.departmentName
-     }
-     obj["subtestName"] = this.subtestName;
-     obj['normalvalueName'] = this.normalvalueName;
-     obj["unitName"] = this.unitName;
-    this.generateReport.push(obj);
-    console.log("==================================",this.generateReport);
+    let ReportDetails = {
+        subtestName : this.subtestName.subtestName,
+        normalvalueName : this.normalvalueName.normalvalueName,
+        unitName : this.unitName.unitName
+    }
+
+
+
+    this.generateReport.push(ReportDetails);
+
   }
+
+
+  postReport(){
+    this.sendReport = [];
+    let postReport = {
+      subtest_id : this.subtestName.id,
+      normalvalue_id : this.normalvalueName.id,
+      unit_id : this.unitName.id
+    }
+
+    this.reportObj.DepartmentName =  this.departmentName;
+    this.reportObj.labtestName = this.labtestName;
+
+
+    this.sendReport.push(postReport);
+
+  }
+
+
+
+
 }

@@ -21,7 +21,8 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReportTableComponent } from './labtest/report-table/report-table.component';
-
+import {TableModule} from 'primeng/table';
+import {TooltipModule} from 'primeng/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,9 @@ import { ReportTableComponent } from './labtest/report-table/report-table.compon
     DialogModule,
     InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule,
+    TooltipModule
 
   //  AccordionModule
   ],
