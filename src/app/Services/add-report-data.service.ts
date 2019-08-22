@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +50,9 @@ export class AddReportDataService {
   }
   public editNormalvalue(id, obj: any): Observable<any> {
     return this.http.put(environment.baseurl + 'api/normalvalue/' + id, obj);
+  }
+
+  public postSampleReport(obj:any):Observable<any>{
+    return this.http.post(environment.baseurl+"api/postreport",obj);
   }
 }
