@@ -1,5 +1,5 @@
 export class Report {
   labtestName: String;
-  DepartmentName: String;
-  sendReport = [];
+  departmentName: String;
+  reportDetails = [];
 }

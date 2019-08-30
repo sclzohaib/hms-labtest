@@ -53,6 +53,9 @@ export class AddReportDataService {
   }
 
   public postSampleReport(obj:any):Observable<any>{
-    return this.http.post(environment.baseurl+"api/postreport",obj);
+    return this.http.post(environment.baseurl+"api/report/",obj);
+  }
+  public getAllCreatedReports():Observable<any>{
+    return this.http.get(environment.baseurl+"api/report/");
   }
 }

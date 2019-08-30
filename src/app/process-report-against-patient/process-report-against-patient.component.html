@@ -1,0 +1,112 @@
+<div class="ui-g-12">
+    <div class="ui-lg-5 ui-md-5 ui-sm-12">
+        <button pButton type="button" label="Back" class="backBtnStyle" style="margin-left: 14%;
+margin-bottom: -3%;
+height: 35px;
+width: 30%;
+width: 50%;" (click)="goToProcessReportPage()"></button>
+    </div>
+</div>
+<div class="ui-g-12">
+    <app-monitor-quick-view></app-monitor-quick-view>
+</div>
+<br />
+<!-- Report DropDown -->
+<div class="ui-g-12">
+    <p-card header="SELECT REPORT" [style]="{
+width: '90%',
+'margin-left':'5%',
+'font-size': '20px',
+'text-align': 'center',
+color: 'black'
+}">
+        <!-- DropDown of reports -->
+        <div class="ui-g ui-fluid">
+            <div class="ui-lg-4 ui-md-4 ui-sm-0"></div>
+            <div class="ui-lg-4 ui-md-4 ui-sm-12">
+
+                <!-- <span class="ui-inputgroup-addon " style="font-size:14px">Select Report </span> -->
+                <p-dropdown name="report" placeholder="No Reports Selected" [filter]="true" [style]="{ width: '65%' }" [options]="reports" [(ngModel)]="selectedReport" (onChange)="getReports()" [showClear]="true">
+                </p-dropdown>
+
+            </div>
+        </div>
+    </p-card>
+</div>
+
+
+<!-- Table of Selected Report -->
+<div *ngIf="isReportSelect">
+    <div class="ui-g-12">
+
+        <div class="ui-g">
+            <div class="ui-md-3">
+                <h3>{{selectedReport}}</h3>
+            </div>
+            <div class="ui-md-3">
+                <div class="ui-inputgroup" style="margin-top:1.2%">
+                    <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
+  Remakrs</span>
+                    <input type="text" pTooltip="Enter Remarks Here" tooltipPosition="top" style="text-align: center;" pInputText name="remarks" placeholder="Remarks" required />
+                </div>
+            </div>
+        </div>
+
+        <p-table [value]="cars" dataKey="vin" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Vin</th>
+                    <th>Year</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th style="width:8em"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+                <tr [pEditableRow]="rowData">
+                    <td>
+                        {{rowData.vin}}
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.year" required>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.year}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <p-dropdown [options]="brands" [(ngModel)]="rowData.brand" [style]="{'width':'100%'}"></p-dropdown>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.brand}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.color">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.color}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td style="text-align:center">
+
+                        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
+
+                        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+
+                        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

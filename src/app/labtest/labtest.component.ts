@@ -1,3 +1,4 @@
+import { Router } from "@angular/router";
 import { Report } from "./report";
 import { NormalValue } from "./../normal-value/NormalValue";
 import { Department } from "./../department/Department";
@@ -27,7 +28,7 @@ export class LabtestComponent implements OnInit {
 
   reportObj: Report;
 
-  constructor(private _addService: AddReportDataService) {}
+  constructor(private _addService: AddReportDataService,private router:Router) {}
 
   ngOnInit() {
     this.reportObj = new Report();
@@ -89,6 +90,7 @@ export class LabtestComponent implements OnInit {
   }
   showSelectedDept() {
     this.deptName = this.departmentName.departmentName;
+    this.reportObj.departmentName = this.deptName;
     console.log("haan bhai men select hogyaaaaa haaaan", this.deptName);
   }
   showReport() {
@@ -102,19 +104,37 @@ export class LabtestComponent implements OnInit {
 
     // this.reportObj.sendReport = [];
     let postReport = {
-      subtest_id: this.subtestName,
-      normalvalue_id: this.normalvalueName,
-      unit_id: this.unitName
+      subtest: this.subtestName.subtestName,
+      normal: this.normalvalueName.normalvalueName,
+      unit: this.unitName.unitName
     };
-    this.reportObj.sendReport.push(postReport);
+    this.reportObj.departmentName = this.deptName;
+    this.reportObj.labtestName = this.labtestName;
+    this.reportObj.reportDetails.push(postReport);
+
+    this.departmentName = "";
+    this.unitName = "";
+    this.labtestName = "";
+    this.subtestName = "";
+    this.normalvalueName = "";
+
+
   }
 
   postReport() {
 
-
-    this.reportObj.DepartmentName = this.departmentName.departmentName;
-    this.reportObj.labtestName = this.labtestName;
-
+    // this.reportObj.departmentName = this.departmentName.departmentName;
+    // this.reportObj.labtestName = this.labtestName;
+    this._addService.postSampleReport(this.reportObj).subscribe((res=>{
+        console.log("================================="+res)
+        this.generateReport = [];
+        this.departmentName.departmentName = "";
+        this.labtestName = "";
+    }))
     console.log(this.reportObj);
+  }
+
+  backToShowReport(){
+    this.router.navigate(['showORprocessReport'])
   }
 }

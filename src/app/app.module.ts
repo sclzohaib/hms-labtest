@@ -1,3 +1,4 @@
+import { MessageService } from "primeng/api";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {DropdownModule} from 'primeng/dropdown';
@@ -23,6 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReportTableComponent } from './labtest/report-table/report-table.component';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
+import { ShowORprocessReportComponent } from './show-orprocess-report/show-orprocess-report.component';
+import { ProcessReportsComponent } from './process-reports/process-reports.component';
+import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
+import { MonitorQuickViewComponent } from './monitor-quick-view/monitor-quick-view.component';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +39,11 @@ import {TooltipModule} from 'primeng/tooltip';
     SubTestComponent,
     UnitComponent,
     NormalValueComponent,
-    ReportTableComponent
+    ReportTableComponent,
+    ShowORprocessReportComponent,
+    ProcessReportsComponent,
+    ProcessReportAgainstPatientComponent,
+    MonitorQuickViewComponent
   ],
   imports: [
     BrowserModule,
@@ -48,11 +58,14 @@ import {TooltipModule} from 'primeng/tooltip';
     FormsModule,
     ReactiveFormsModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    ToastModule
 
   //  AccordionModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
