@@ -24,9 +24,12 @@
                         <div class="ui-md-2 ui-lg-2"></div>
                         <div class="ui-md-7 ui-lg-7 ui-sm-12">
                             <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
+                                <span class="ui-inputgroup-addon" style="height:35px;width:40%;font-size:15px; font-weight: bold;">
                   Lab Test</span>
-                                <input type="text" pTooltip="Enter Labtest Name" tooltipPosition="top" style="text-align: center" pInputText name="labtestName" placeholder="Labtest Name" required (input)="changed($event)" />
+                  <p-dropdown [options]="LabTestDropdown" name="Department_Name" (onChange)="showSelectedDept()" [(ngModel)]="departmentName" filter="true" [style]="{width:'350px',height:'35px'}" pTooltip="Select Department Name" tooltipPosition="top" tooltipEvent="hover"
+                  placeholder="Select Deparment">
+              </p-dropdown>
+
                             </div>
                         </div>
                     </div>

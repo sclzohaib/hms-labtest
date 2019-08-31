@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShowORprocessReportComponent } from './show-orprocess-report/show-orprocess-report.component';
 import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
+import { MainLabtestComponent } from './main-labtest/main-labtest.component';
+import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,12 @@ const routes: Routes = [
     path: "processReports", component: ProcessReportsComponent
   }, {
     path: "processReportsAgainstsPatient", component: ProcessReportAgainstPatientComponent
+  },
+  {
+    path: "mainLabtestComponent", component:MainLabtestComponent
+  },
+  {
+    path: "addlabtestFormComponent", component : AddLabtestformComponent
   }
 
 ];
