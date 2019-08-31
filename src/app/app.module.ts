@@ -29,6 +29,8 @@ import { ProcessReportsComponent } from './process-reports/process-reports.compo
 import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
 import { MonitorQuickViewComponent } from './monitor-quick-view/monitor-quick-view.component';
 import {ToastModule} from 'primeng/toast';
+import { MainLabtestComponent } from './main-labtest/main-labtest.component';
+import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import {ToastModule} from 'primeng/toast';
     ShowORprocessReportComponent,
     ProcessReportsComponent,
     ProcessReportAgainstPatientComponent,
-    MonitorQuickViewComponent
+    MonitorQuickViewComponent,
+    MainLabtestComponent,
+    AddLabtestformComponent
   ],
   imports: [
     BrowserModule,
