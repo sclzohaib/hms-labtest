@@ -1,8 +1,8 @@
 export interface Car {
-  vin?;
-  year?;
+  subtest?;
+  normalvalue?;
   brand?;
-  color?;
-  price?;
-  saleDate?;
+  unitvalue?;
+  result?;
+
 }
