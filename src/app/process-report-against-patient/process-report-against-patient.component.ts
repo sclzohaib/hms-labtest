@@ -2,103 +2,139 @@ import { Car } from "./car";
 import { SelectItem } from "primeng/components/common/selectitem";
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Router } from "@angular/router";
-import { Component, OnInit } from '@angular/core';
-import {MessageService} from 'primeng/api';
+import { Component, OnInit } from "@angular/core";
+import { MessageService } from "primeng/api";
 
 @Component({
-  selector: 'app-process-report-against-patient',
-  templateUrl: './process-report-against-patient.component.html',
-  styleUrls: ['./process-report-against-patient.component.css']
+  selector: "app-process-report-against-patient",
+  templateUrl: "./process-report-against-patient.component.html",
+  styleUrls: ["./process-report-against-patient.component.css"]
 })
 export class ProcessReportAgainstPatientComponent implements OnInit {
-  reports :SelectItem[];
+  reports: SelectItem[];
   selectedReport = null;
   isReportSelect = false;
-  brands : SelectItem[];
-  cars: Car[];
+  brands: SelectItem[];
+  cars  : Car[];
   remarks;
+  result;
 
-  clonedCars: { [s: string]: Car; } = {};
 
-  constructor(private router:Router,private _addService: AddReportDataService,
-    private messageService:MessageService) { }
+
+  constructor(
+    private router: Router,
+    private _addService: AddReportDataService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.reports = [
-      { label: 'Blood Test', value: 'BloodTest' },
-      { label: 'Urine Test', value: 'Urine Test' },
-      { label: 'Pregnancy Test', value: 'Pregnancy Test' },
+      { label: "Blood Test", value: "BloodTest" },
+      { label: "Urine Test", value: "Urine Test" },
+      { label: "Pregnancy Test", value: "Pregnancy Test" }
     ];
 
 
+    
+    // this.cars = [
+    //   {
+    //     field:"subtest",value:"23.3",
+    //   },
+    //   {
+    //     field:"subtest",value:"23.3"
+    //   },
+    //   {
+    //     field:"subtest",value:"23.3"
+    //   },
+    //   {
+    //     field:"unitvalue",value:"90"
+    //   }
+    // ]
 
-    this.brands = [
-      {label: 'Audi', value: 'Audi'},
-      {label: 'BMW', value: 'BMW'},
-      {label: 'Fiat', value: 'Fiat'},
-      {label: 'Ford', value: 'Ford'},
-      {label: 'Honda', value: 'Honda'},
-      {label: 'Jaguar', value: 'Jaguar'},
-      {label: 'Mercedes', value: 'Mercedes'},
-      {label: 'Renault', value: 'Renault'},
-      {label: 'VW', value: 'VW'},
-      {label: 'Volvo', value: 'Volvo'}
-  ];
-  }
+    this.cars = [
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
+      {
+        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
+       },
 
+  ]
+    var x = "meow";
 
+    let arr = {
 
-
-
-
-
-  goToProcessReportPage(){
-    this.router.navigate(['processReports'])
-  }
-
-  getReports(){
-
-    this._addService.getAllCreatedReports().subscribe((rep=>{
-      console.log("=========>",)
-        rep.map(e=>{
-            this.reports.push({
-              label:e.reportName,
-              value:e
-            });
-        })
-
-  })
-  )
-    if(this.selectedReport!=null){
-      console.log("selected report",this.selectedReport)
-      this.isReportSelect = true;
+        subtest : "newEst subtets",
+        normalvalue : "99999",
+        unitvalue : "jani",
+        result:null
     }
-    else {
+
+  // this.cars.push({subtest:x});
+  this.cars.push(arr)
+  console.log(this.cars[0]);
+  console.log(this.cars.pop());
+
+
+}
+
+goToProcessReportPage() {
+  this.router.navigate(["processReports"]);
+}
+
+getReports() {
+
+  this._addService.getAllCreatedReports().subscribe(rep => {
+    console.log("=========>");
+    rep.map(e => {
+        this.reports.push({
+          label: e.reportName,
+          value: e
+        });
+      });
+    });
+    if (this.selectedReport != null) {
+      console.log("selected report", this.selectedReport);
+      this.isReportSelect = true;
+    } else {
       this.isReportSelect = false;
     }
-}
-
-
-onRowEditInit(car: Car) {
-  this.clonedCars[car.vin] = {...car};
-}
-
-onRowEditSave(car: Car) {
-  if (car.year > 0) {
-      delete this.clonedCars[car.vin];
-      this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
   }
-  else {
-      this.messageService.add({severity:'error', summary: 'Error', detail:'Year is required'});
+
+
+  indexPakro(v:any){
+    console.log("men mouse out chal rha hn",v)
+    console.log(this.cars[v]);
+
+  }
+  onKey(event,v:any){
+    console.log("yeh tab chal rha hai ",v)
+    console.log(this.cars[v]);
+
+  }
+
+  onSubmit(){
+    console.log("FINAL REPORT",this.cars)
   }
 }
-
-onRowEditCancel(car: Car, index: number) {
-  this.cars[index] = this.clonedCars[car.vin];
-  delete this.clonedCars[car.vin];
-}
-
-
-}
-
-
