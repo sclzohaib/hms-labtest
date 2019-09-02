@@ -33,7 +33,7 @@ export class MainLabtestComponent implements OnInit {
 
         this.tests.push({
           'id': value.id,
-          'category': value.category,
+          // 'category': value.category,
           'testname': value.name,
           'testprice': value.price,
           'testdetails': value.details
@@ -42,7 +42,7 @@ export class MainLabtestComponent implements OnInit {
     }, error => { console.log(error) })
     this.cols = [
       { field: 'id', header: "ID" },
-      { field: 'category', header: 'Test Category' },
+      // { field: 'category', header: 'Test Category' },
       { field: 'testname', header: 'Test Name' },
       { field: 'testprice', header: 'Test Price' },
       { field: 'testdetails', header: 'Test Details' }
@@ -62,7 +62,7 @@ export class MainLabtestComponent implements OnInit {
 
         this.tests.push({
           'id': value.id,
-          'category': value.category,
+          // 'category': value.category,
           'testname': value.name,
           'testprice': value.price,
           'testdetails': value.details

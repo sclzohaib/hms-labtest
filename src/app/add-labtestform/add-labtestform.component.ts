@@ -34,16 +34,7 @@ export class AddLabtestformComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.labservice.getcategory().subscribe(data => {
-      console.log(data);
-      data.map(v => {
-        let obj = {
-          label: v.category,
-          value: v.category
-        };
-        this.cities1.push(obj);
-      });
-    });
+  
   }
 
   back() {
