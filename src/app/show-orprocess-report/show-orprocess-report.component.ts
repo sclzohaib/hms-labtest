@@ -19,5 +19,8 @@ export class ShowORprocessReportComponent implements OnInit {
   routerToProcessReport(){
     this.router.navigate(['processReports']);
   }
-
+  routeTomainLabtest(){
+    this.router.navigate(['mainLabtestComponent']);
+    
+  }
 }

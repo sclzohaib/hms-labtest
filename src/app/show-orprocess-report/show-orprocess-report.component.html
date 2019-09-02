@@ -13,8 +13,8 @@
 
         <hr style="height:2px;width:100%;background-color:green" />
         <div class="ui-g ">
-            <div class="ui-md-1"></div>
-            <div class="ui-g-3 ui-sm-12  ui-md-5   ui-lg-5">
+            <!-- <div class="ui-md-1"></div> -->
+            <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
                 <p-card styleClass="cardClass" [style]="{
             width: '100%',
             'text-align': 'center',
@@ -36,7 +36,7 @@
                 </p-card>
             </div>
 
-            <div class="ui-g-3 ui-sm-12  ui-md-5   ui-lg-5">
+            <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
                 <p-card styleClass="cardClass" [style]="{
             width: '100%',
             'text-align': 'center',
@@ -52,6 +52,26 @@
                     <div class="ui-g">
                         <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
                             <button pButton type="button" class="backBtnStyle" style="width:50%;  height:40px;" (click)="routerToProcessReport()" label="Check Process Reports"></button>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+            <div class="ui-g-3 ui-sm-12  ui-md-4   ui-lg-4">
+                <p-card styleClass="cardClass" [style]="{
+            width: '100%',
+            'text-align': 'center',
+            color: 'green'
+          }">
+                    <div class="ui-g">
+                        <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+                            <img src="../../assets/images/chemistry.png" height="120" width="125" />
+                        </div>
+                    </div>
+
+
+                    <div class="ui-g">
+                        <div class="ui-g-3 ui-sm-12  ui-md-12   ui-lg-12">
+                            <button pButton type="button" class="backBtnStyle" style="width:50%;  height:40px;" (click)="routeTomainLabtest()" label="Add lab tests"></button>
                         </div>
                     </div>
                 </p-card>

@@ -6,6 +6,7 @@ import { Component, OnInit, ɵConsole } from "@angular/core";
 import { SelectItem } from "primeng/components/common/selectitem";
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { typeWithParameters } from "@angular/compiler/src/render3/util";
+import { LabtestServiceService } from '../main-labtest/labtest-service.service';
 
 @Component({
   selector: "app-labtest",
@@ -17,6 +18,7 @@ export class LabtestComponent implements OnInit {
   subTest: SelectItem[];
   unit: SelectItem[];
   normalValue: SelectItem[];
+  LabTestDropdown: SelectItem[] = [];
   departmentName;
   subtestName;
   normalvalueName;
@@ -28,7 +30,7 @@ export class LabtestComponent implements OnInit {
 
   reportObj: Report;
 
-  constructor(private _addService: AddReportDataService,private router:Router) {}
+  constructor(private _addService: AddReportDataService,private router:Router,private labServ: LabtestServiceService) {}
 
   ngOnInit() {
     this.reportObj = new Report();
@@ -36,6 +38,7 @@ export class LabtestComponent implements OnInit {
     this.getSubTest();
     this.getUnit();
     this.getNormalValue();
+    this.getLabTestsInDropDown();
   }
 
   changed(e) {
@@ -87,6 +90,19 @@ export class LabtestComponent implements OnInit {
         });
       });
     });
+  }
+
+  getLabTestsInDropDown(){
+    this.labServ.getlabtest().subscribe(data =>{
+      data.map(d =>{
+        this.LabTestDropdown.push({
+          label:d.name,
+          value:d
+        })
+      }
+
+      )
+    })
   }
   showSelectedDept() {
     this.deptName = this.departmentName.departmentName;

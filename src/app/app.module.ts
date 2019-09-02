@@ -30,6 +30,9 @@ import { ProcessReportAgainstPatientComponent } from './process-report-against-p
 import { MonitorQuickViewComponent } from './monitor-quick-view/monitor-quick-view.component';
 import {ToastModule} from 'primeng/toast';
 import { BlockUIModule } from 'primeng/blockui';
+import { MainLabtestComponent } from './main-labtest/main-labtest.component';
+import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { BlockUIModule } from 'primeng/blockui';
     ShowORprocessReportComponent,
     ProcessReportsComponent,
     ProcessReportAgainstPatientComponent,
-    MonitorQuickViewComponent
+    MonitorQuickViewComponent,
+    MainLabtestComponent,
+    AddLabtestformComponent
   ],
   imports: [
     BrowserModule,
