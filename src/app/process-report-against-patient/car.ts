@@ -4,5 +4,4 @@ export interface Car {
   brand?;
   unitvalue?;
   result?;
-
 }

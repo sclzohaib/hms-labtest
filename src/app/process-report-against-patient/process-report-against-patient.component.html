@@ -1,3 +1,6 @@
+
+
+<p-toast></p-toast>
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
         <button pButton type="button" label="Back" class="backBtnStyle" style="margin-left: 14%;
@@ -34,7 +37,6 @@ unitvalue: 'black'
     </p-card>
 </div>
 
-
 <!-- Table of Selected Report -->
 <div *ngIf="isReportSelect">
     <div class="ui-g-12">
@@ -44,84 +46,83 @@ unitvalue: 'black'
                 <h3 style="text-decoration:underline">{{selectedReport}}</h3>
             </div>
 
-        <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
+            <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
 
-            <div class="ui-md-4" style="margin-top:1.2%">
+            <div class="ui-md-6 ui-lg-6" style="margin-top:1.2%">
                 <div class="ui-inputgroup" style="margin-top:1.2%">
                     <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
-  Remakrs</span>
-                    <input type="text" pTooltip="Enter Remarks Here" tooltipPosition="top" style="text-align: center;" pInputText name="remarks" placeholder="Remarks" required />
+            Remakrs</span>
+                    <input type="text" pTooltip="Enter Remarks Here" tooltipPosition="top" [(ngModel)]="remarks"  style="text-align: center;" pInputText name="remarks" placeholder="Remarks" required />
                 </div>
             </div>
         </div>
 
-                <p-table [value]="cars" [responsive]="true" [resizableColumns]="true">
-                <ng-template pTemplate="header" pResizableColumn>
-                    <tr>
-                        <th>Subtest</th>
-                        <th>Normalvalue</th>
-                        <th>Unitvalue</th>
-                        <th style="width:30em">Result</th>
-                        <th>Actions</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                    <tr>
-                        <td class="ui-resizable-column" >
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData.subtest">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.subtest}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td class="ui-resizable-column">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData.normalvalue" required>
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.normalvalue}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
+        <p-table [value]="completeReport" [responsive]="true" [resizableColumns]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Subtest</th>
+                    <th>Normalvalue</th>
+                    <th>Unitvalue</th>
+                    <th style="width:30em">Result</th>
+                    <th>Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr>
+                    <td class="ui-resizable-column">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.subtest">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.subtest}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="ui-resizable-column">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.normalvalue" required>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.normalvalue}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
 
-                        <td class="ui-resizable-column">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData.unitvalue">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.unitvalue}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
+                    <td class="ui-resizable-column">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.unitvalue">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.unitvalue}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
 
-                        <td pEditableColumn class="ui-resizable-column">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" 
-                                    (mouseout)="indexPakro(rowIndex)" (keydown.Tab)="onKey($event,rowIndex)" [(ngModel)]="rowData.result">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.result}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td class="ui-resizable-column">
+                    <td pEditableColumn class="ui-resizable-column">
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" (mouseout)="indexPakro(rowIndex)" (keydown.Tab)="onKey($event,rowIndex)" [(ngModel)]="rowData.result">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{rowData.result}}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="ui-resizable-column">
 
-                            <button pButton style="width:50%;background-color: rgb(211, 56, 56);" type="button" label="Delete"></button>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-            <div class="ui-g-12">
-              <div class="ui-md-3"></div>  
-              <div class="ui-md-5">
-                  <button pButton style="width:50%;background-color: rgb(211, 56, 56);" type="button" label="Submit" (click)="onSubmit()"></button>
-              </div>
-              </div>
+                        <button pButton style="width:50%;background-color: rgb(211, 56, 56);" type="button" label="Delete"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <br>
+        <div class="p-grid">
+            <div class="p-col-6 p-offset-3">
+                <button pButton style="width:100%;" class="backBtnStyle" type="button" label="SAVE" (click)="onSubmit()"></button>
+            </div>
+        </div>
     </div>
 </div>

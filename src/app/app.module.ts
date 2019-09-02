@@ -29,6 +29,7 @@ import { ProcessReportsComponent } from './process-reports/process-reports.compo
 import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
 import { MonitorQuickViewComponent } from './monitor-quick-view/monitor-quick-view.component';
 import {ToastModule} from 'primeng/toast';
+import { BlockUIModule } from 'primeng/blockui';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,13 +60,12 @@ import {ToastModule} from 'primeng/toast';
     ReactiveFormsModule,
     TableModule,
     TooltipModule,
-    ToastModule
+    ToastModule,
+    BlockUIModule
 
-  //  AccordionModule
+    //  AccordionModule
   ],
-  providers: [
-    MessageService
-  ],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
