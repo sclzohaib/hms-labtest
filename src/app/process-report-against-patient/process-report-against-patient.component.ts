@@ -15,11 +15,9 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
   selectedReport = null;
   isReportSelect = false;
   brands: SelectItem[];
-  cars  : Car[];
+  completeReport: Car[];
   remarks;
   result;
-
-
 
   constructor(
     private router: Router,
@@ -33,81 +31,17 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
       { label: "Urine Test", value: "Urine Test" },
       { label: "Pregnancy Test", value: "Pregnancy Test" }
     ];
+  }
 
+  goToProcessReportPage() {
+    this.router.navigate(["processReports"]);
+  }
 
-    
-    // this.cars = [
-    //   {
-    //     field:"subtest",value:"23.3",
-    //   },
-    //   {
-    //     field:"subtest",value:"23.3"
-    //   },
-    //   {
-    //     field:"subtest",value:"23.3"
-    //   },
-    //   {
-    //     field:"unitvalue",value:"90"
-    //   }
-    // ]
-
-    this.cars = [
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-      {
-        subtest:"chlorine",normalvalue:"92.34",unitvalue:"34.3",result:null
-       },
-
-  ]
-    var x = "meow";
-
-    let arr = {
-
-        subtest : "newEst subtets",
-        normalvalue : "99999",
-        unitvalue : "jani",
-        result:null
-    }
-
-  // this.cars.push({subtest:x});
-  this.cars.push(arr)
-  console.log(this.cars[0]);
-  console.log(this.cars.pop());
-
-
-}
-
-goToProcessReportPage() {
-  this.router.navigate(["processReports"]);
-}
-
-getReports() {
-
-  this._addService.getAllCreatedReports().subscribe(rep => {
-    console.log("=========>");
-    rep.map(e => {
+  getReports() {
+    this.populateReport();
+    this._addService.getAllCreatedReports().subscribe(rep => {
+      console.log("=========>");
+      rep.map(e => {
         this.reports.push({
           label: e.reportName,
           value: e
@@ -122,19 +56,112 @@ getReports() {
     }
   }
 
-
-  indexPakro(v:any){
-    console.log("men mouse out chal rha hn",v)
-    console.log(this.cars[v]);
-
+  indexPakro(v: any) {
+    console.log("men mouse out chal rha hn", v);
+    console.log(this.reports[v]);
   }
-  onKey(event,v:any){
-    console.log("yeh tab chal rha hai ",v)
-    console.log(this.cars[v]);
-
+  onKey(event, v: any) {
+    console.log("yeh tab chal rha hai ", v);
+    console.log(this.completeReport[v]);
   }
 
-  onSubmit(){
-    console.log("FINAL REPORT",this.cars)
+  onSubmit() {
+    console.log("remarks are ",this.remarks)
+    console.log("FINAL REPORT", this.completeReport);
+    this._addService
+      .postReportAgainstPatient(this.completeReport)
+      .subscribe(res => {
+        if (res) {
+          this.messageService.add({
+            severity: "sucess",
+            summary: "Report Posted SucessFully",
+            detail: this.selectedReport + " report for patient 1 is posted"
+          });
+          // this.completeReport = [];
+          // this.isReportSelect = false;
+          // this.populateReport();
+        }
+        else {
+         this.messageService.add({severity:'error', summary: 'Error Message', detail:'Validation failed'});
+        }
+      });
+
+         this.messageService.add({severity:'error', summary: 'Error Message', detail:'Validation failed'});
+    this.completeReport = [];
+    this.isReportSelect = false;
+    this.selectedReport = null;
+    this.populateReport();
+
+  }
+
+  populateReport() {
+    this.completeReport = [
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      },
+      {
+        subtest: "chlorine",
+        normalvalue: "92.34",
+        unitvalue: "34.3",
+        result: null
+      }
+    ];
+    // var x = "meow";
+
+    let arr = {
+      subtest: "newEst subtets",
+      normalvalue: "99999",
+      unitvalue: "jani",
+      result: null
+    };
+
+    // this.reports.push({subtest:x});
+    this.completeReport.push(arr);
+    console.log(this.reports[0]);
   }
 }

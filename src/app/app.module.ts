@@ -29,8 +29,10 @@ import { ProcessReportsComponent } from './process-reports/process-reports.compo
 import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
 import { MonitorQuickViewComponent } from './monitor-quick-view/monitor-quick-view.component';
 import {ToastModule} from 'primeng/toast';
+import { BlockUIModule } from 'primeng/blockui';
 import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,13 +65,12 @@ import { AddLabtestformComponent } from './add-labtestform/add-labtestform.compo
     ReactiveFormsModule,
     TableModule,
     TooltipModule,
-    ToastModule
+    ToastModule,
+    BlockUIModule
 
-  //  AccordionModule
+    //  AccordionModule
   ],
-  providers: [
-    MessageService
-  ],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

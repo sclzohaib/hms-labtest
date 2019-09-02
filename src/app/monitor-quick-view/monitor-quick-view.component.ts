@@ -1,3 +1,4 @@
+import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonitorQuickViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adSerivce:AddReportDataService) { }
 
   ngOnInit() {
+
   }
 
 }
