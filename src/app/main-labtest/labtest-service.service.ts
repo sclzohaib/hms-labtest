@@ -10,17 +10,17 @@ import {environment} from '../../environments/environment';
 })
 export class LabtestServiceService {
 
-  private url:any= environment.baseurl+"api/labtest";
+  private url:any= environment.baseurl+"api/labtestregistration";
   constructor(private http:HttpClient) { 
   }
 
-  getcategory():Observable<any>{
-   return this.http.get(this.url+"/category");
-  }
+  // getcategory():Observable<any>{
+  //  return this.http.get(this.url+"/category");
+  // }
 
-  postcategory(category):Observable<any>{
-    return this.http.post(this.url+"/category",category)
-  }
+  // postcategory(category):Observable<any>{
+  //   return this.http.post(this.url+"/category",category)
+  // }
 
 
   getlabtest():Observable<any>{
