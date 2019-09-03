@@ -48,14 +48,23 @@ export class AddLabtestformComponent implements OnInit {
     console.log(this.test);
 
     this.labservice.postlabtest(this.test).subscribe(
+  
       d => {
+        if(d['Labtest added successfully'] == 1){
         this.loader = false;
         this.messageService.add({
           severity: 'success',
           summary: 'Service Message',
           detail: Object.keys(d)[0]
         });
-
+      }
+      else{
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Labtest already exist',
+          detail: Object.keys(d)[0]
+        });
+      }
         console.log(d);
       },
       error => {
