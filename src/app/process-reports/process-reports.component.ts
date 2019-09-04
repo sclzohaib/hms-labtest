@@ -1,3 +1,4 @@
+import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 
@@ -10,7 +11,7 @@ export class ProcessReportsComponent implements OnInit {
   totalRecords = 0;
   pateintDetails = [];
   cols = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router,private _adService:AddReportDataService) { }
 
   ngOnInit() {
     this.cols = [
@@ -24,9 +25,32 @@ export class ProcessReportsComponent implements OnInit {
       { field: "status", header: "LabTest Status" },
       { field: "registrationDate", header: "Registration Date" }
     ];
+
+    this.getLabTestProcessPatients();
   }
   backToShowOrProcessReports() {
     this.router.navigate(["/showORprocessReport/"]);
   }
-  processReportAgainstsPatientId(id: any) { }
+  processReportAgainstsPatientId(id: any) {
+    this.router.navigate(["/ProcessReportAgainstPatientComponent/"+id]);
+   }
+
+  getLabTestProcessPatients(){
+    this._adService.getAllPateints().subscribe(response => {
+      this.pateintDetails = [];
+      console.log(response);
+      response.map(value => {
+        this.pateintDetails.push({
+          id: value.id,
+          name: value.patientLab.name,
+          cnic: value.patientLab.cnic,
+          phoneNo: value.patientLab.phoneNo,
+          age: value.patientLab.age,
+          gender: value.patientLab.gender,
+          address: value.patientLab.address,
+          status: value.status
+        });
+      });
+    });
+  }
 }

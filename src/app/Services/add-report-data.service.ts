@@ -62,4 +62,8 @@ export class AddReportDataService {
   public postReportAgainstPatient(object:any):Observable<any>{
     return this.http.post(environment.baseurl + "api/postReport/",object);
   }
+
+  public getAllPateints():Observable<any>{
+    return this.http.get(environment.baseurl+"api/report/process")
+  }
 }

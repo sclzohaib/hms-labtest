@@ -19,7 +19,7 @@ const routes: Routes = [
   }, {
     path: "processReports", component: ProcessReportsComponent
   }, {
-    path: "processReportsAgainstsPatient", component: ProcessReportAgainstPatientComponent
+    path: "processReportsAgainstsPatient/:id", component: ProcessReportAgainstPatientComponent
   },
   {
     path: "mainLabtestComponent", component:MainLabtestComponent

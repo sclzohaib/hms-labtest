@@ -1,7 +1,7 @@
 import { Car } from "./car";
 import { SelectItem } from "primeng/components/common/selectitem";
 import { AddReportDataService } from "./../Services/add-report-data.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
 
@@ -18,11 +18,13 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
   completeReport: Car[];
   remarks;
   result;
+  id;
 
   constructor(
     private router: Router,
     private _addService: AddReportDataService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private activatedRoute:ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -31,6 +33,8 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
       { label: "Urine Test", value: "Urine Test" },
       { label: "Pregnancy Test", value: "Pregnancy Test" }
     ];
+    this.id = this.activatedRoute.snapshot.params['id'];
+    console.log(this.id);
   }
 
   goToProcessReportPage() {
@@ -66,7 +70,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("remarks are ",this.remarks)
+    console.log("remarks are ", this.remarks);
     console.log("FINAL REPORT", this.completeReport);
     this._addService
       .postReportAgainstPatient(this.completeReport)
@@ -80,21 +84,29 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
           // this.completeReport = [];
           // this.isReportSelect = false;
           // this.populateReport();
-        }
-        else {
-         this.messageService.add({severity:'error', summary: 'Error Message', detail:'Validation failed'});
+        } else {
+          this.messageService.add({
+            severity: "error",
+            summary: "Error Message",
+            detail: "Validation failed"
+          });
         }
       });
 
-         this.messageService.add({severity:'error', summary: 'Error Message', detail:'Validation failed'});
+    this.messageService.add({
+      severity: "error",
+      summary: "Error Message",
+      detail: "Validation failed"
+    });
     this.completeReport = [];
     this.isReportSelect = false;
     this.selectedReport = null;
     this.populateReport();
-
   }
 
   populateReport() {
+
+
     this.completeReport = [
       {
         subtest: "chlorine",
