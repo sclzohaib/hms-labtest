@@ -1,26 +1,87 @@
+<div class="ui-g">
 
-    <div class="ui-lg-5 ui-md-5 ui-sm-12"></div>
-    <p-table style="text-align: center;">
-        <ng-template ptemplate="caption">
-            <div class="ui-g-12">
-                <h1 style="font-weight:bold;color: green;">PATIENT LABTEST DETAILS</h1>
-                <hr style="background-color:rgb(17, 17, 17);height:3px;">
-            </div>
-            <div style="text-align: right">
-                <input pinputtext="" placeholder="Global Filter" size="50" style="width:auto;margin-right:14px;" type="text">
-            </div>
-        </ng-template>
-        <ng-template let-columns ptemplate="header">
-            <ng-template let-columns="columns" let-rowdata ptemplate="body"></ng-template>
-            <table>
+    <div class="ui-g-4 ui-lg-4 ui-sm-12">
+        <button pButton
+            type="button"
+            class="backBtnStyle"
+            (click)="backToShowOrProcessReports()"
+            style="width:80%;margin-left:10%;  height:40px;"
+            label="Back"></button>
+    </div>
+
+    <p-toast></p-toast>
+
+    <p-card header="PATEINT DETAILS FOR LABTEST"
+        [style]="{  width: '100%',
+  'font-size': '26px',
+  'text-align': 'center',
+  color: 'green'
+  }">
+        <hr />
+        <p-table style="word-wrap:break-word;"
+            #dt
+            [paginator]="true"
+            [value]="pateintDetails"
+            [rows]="10"
+            [totalRecords]="totalRecords"
+            [style]="{ 'margin-top': '50px', width: '100%'}"
+            [columns]="cols">
+            <ng-template pTemplate="caption">
+
+                <div style="text-align: right">
+                    <i class="fa fa-search"
+                        style="margin:4px 4px 0 0"></i>
+                    <input type="text"
+                        pInputText
+                        size="50"
+                        placeholder="Global Filter"
+                        (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        style="width:auto" />
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header"
+                let-columns>
                 <tr>
-                    <th style="text-align:center">{{ col.header }}</th>
+                    <th style="text-align:center"
+                        *ngFor="let col of columns">
+                        {{ col.header }}
+                    </th>
                     <th style="text-align:center">Actions</th>
                 </tr>
+            </ng-template>
+            <ng-template pTemplate="body"
+                let-rowData
+                let-columns="columns">
                 <tr>
-                    <td style="overflow:auto;">{{ rowData[col.field] }}</td>
-                    <td></td>
+                    <td style="text-align:center"
+                        *ngFor="let col of columns">
+                        {{ rowData[col.field] }}
+                        
+                    </td>
+                  
+                    <td>
+                        <button pButton
+                            style="background-color: rgb(153,168, 14);"
+                            type="button"
+                            label="PROCESS"
+                            (click)="processReportAgainstsPatientId(rowData,rowData['patientId'])">
+                        </button>
+                        
+                        
+                    </td>
                 </tr>
-            </table>
-        </ng-template>
-    </p-table>
+            </ng-template>
+        </p-table>
+    </p-card>
+<div class="ui-g-12"
+    *ngIf="empty">
+    <p style="text-align:center;">No Data</p>
+</div>
+</div>
+
+<!-- <div [hidden]="true">
+    <app-monitor-quick-view [value]="data">
+    
+    </app-monitor-quick-view>
+</div> -->
+

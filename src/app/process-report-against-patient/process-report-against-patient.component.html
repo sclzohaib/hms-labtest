@@ -1,27 +1,32 @@
-
-
 <p-toast></p-toast>
 <div class="ui-g-12">
     <div class="ui-lg-5 ui-md-5 ui-sm-12">
-        <button pButton type="button" label="Back" class="backBtnStyle" style="margin-left: 14%;
+        <button pButton
+            type="button"
+            label="Back"
+            class="backBtnStyle"
+            style="margin-left: 14%;
 margin-bottom: -3%;
 height: 35px;
 width: 30%;
-width: 50%;" (click)="goToProcessReportPage()"></button>
+width: 50%;"
+            (click)="goToProcessReportPage()"></button>
     </div>
 </div>
 <div class="ui-g-12">
     <app-monitor-quick-view></app-monitor-quick-view>
 </div>
+
 <br />
 <!-- Report DropDown -->
 <div class="ui-g-12">
-    <p-card header="SELECT REPORT" [style]="{
+    <p-card header="SELECT REPORT"
+        [style]="{
 width: '90%',
 'margin-left':'5%',
 'font-size': '20px',
 'text-align': 'center',
-unitvalue: 'black'
+unit: 'black'
 }">
         <!-- DropDown of reports -->
         <div class="ui-g ui-fluid">
@@ -29,7 +34,14 @@ unitvalue: 'black'
             <div class="ui-lg-4 ui-md-4 ui-sm-12">
 
                 <!-- <span class="ui-inputgroup-addon " style="font-size:14px">Select Report </span> -->
-                <p-dropdown name="report" placeholder="No Reports Selected" [filter]="true" [style]="{ width: '65%' }" [options]="reports" [(ngModel)]="selectedReport" (onChange)="getReports()" [showClear]="true">
+                <p-dropdown name="report"
+                    placeholder="No Reports Selected"
+                    [filter]="true"
+                    [style]="{ width: '65%' }"
+                    [options]="reports"
+                    [(ngModel)]="selectedReport"
+                    (onChange)="getSelectedReport()"
+                    [showClear]="true">
                 </p-dropdown>
 
             </div>
@@ -40,89 +52,179 @@ unitvalue: 'black'
 <!-- Table of Selected Report -->
 <div *ngIf="isReportSelect">
     <div class="ui-g-12">
+        <p-card [style]="{
+width: '90%',
+'margin-left':'5%',
+'font-size': '20px',
+'text-align': 'center',
+unit: 'black'
+}">
+            <div class="ui-g">
+                <div class="ui-md-3">
+                    <h4 style="text-decoration: underline;
+    font-size: x-large;
+    margin-top: 8%;">{{selectedReport.reportName}} Report</h4>
+                </div>
 
-        <div class="ui-g">
-            <div class="ui-md-3">
-                <h3 style="text-decoration:underline">{{selectedReport}}</h3>
-            </div>
+                <!-- <div class="ui-md-1 ui-lg-1 ui-sm-0"></div> -->
 
-            <div class="ui-md-1 ui-lg-1 ui-sm-0"></div>
-
-            <div class="ui-md-6 ui-lg-6" style="margin-top:1.2%">
-                <div class="ui-inputgroup" style="margin-top:1.2%">
-                    <span class="ui-inputgroup-addon" style="height:35px;width:37%;font-size:15px; font-weight: bold;">
-            Remakrs</span>
-                    <input type="text" pTooltip="Enter Remarks Here" tooltipPosition="top" [(ngModel)]="remarks"  style="text-align: center;" pInputText name="remarks" placeholder="Remarks" required />
+                <div class="ui-md-6 ui-lg-6"
+                    style="margin-top:1.2%">
+                    <div class="ui-inputgroup"
+                        style="margin-top:1.2%">
+                        <span class="ui-inputgroup-addon"
+                            style="height:35px;width:20%;font-size:15px; font-weight: bold;">
+                            Remakrs</span>
+                        <input type="text"
+                            pTooltip="Enter Remarks Here"
+                            tooltipPosition="top"
+                            [(ngModel)]="remarks"
+                            style="text-align: center;width: 100%"
+                            pInputText
+                            name="remarks"
+                            placeholder="Remarks"
+                            required />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <p-table [value]="completeReport" [responsive]="true" [resizableColumns]="true">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Subtest</th>
-                    <th>Normalvalue</th>
-                    <th>Unitvalue</th>
-                    <th style="width:30em">Result</th>
-                    <th>Actions</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                <tr>
-                    <td class="ui-resizable-column">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="rowData.subtest">
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{rowData.subtest}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td class="ui-resizable-column">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="rowData.normalvalue" required>
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{rowData.normalvalue}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
+            <p-table [value]="patientReportDetails"
+                [responsive]="true"
+                [resizableColumns]="true">
+                <ng-template pTemplate="header">
+                    <tr>
 
-                    <td class="ui-resizable-column">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="rowData.unitvalue">
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{rowData.unitvalue}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
+                        <th>Subtest</th>
+                        <th>normal</th>
+                        <th>unit</th>
+                        <th style="width:30em">Result   (Please Fill it)</th>
+                        <!-- <th>Actions</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body"
+                    let-rowData
+                    let-rowIndex="rowIndex">
+                    <tr>
+                        <td class="ui-resizable-column">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText
+                                        type="text"
+                                        [(ngModel)]="rowData.subtest">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.subtest}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td class="ui-resizable-column">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText
+                                        type="text"
+                                        [(ngModel)]="rowData.normal"
+                                        required>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.normal}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
 
-                    <td pEditableColumn class="ui-resizable-column">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" (mouseout)="indexPakro(rowIndex)" (keydown.Tab)="onKey($event,rowIndex)" [(ngModel)]="rowData.result">
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{rowData.result}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td class="ui-resizable-column">
+                        <td class="ui-resizable-column">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText
+                                        type="text"
+                                        [(ngModel)]="rowData.unit">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.unit}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
 
-                        <button pButton style="width:50%;background-color: rgb(211, 56, 56);" type="button" label="Delete"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-        <br>
-        <div class="p-grid">
-            <div class="p-col-6 p-offset-3">
-                <button pButton style="width:100%;" class="backBtnStyle" type="button" label="SAVE" (click)="onSubmit()"></button>
+                        <td pEditableColumn style="border: 3px solid #469446"
+                            class="ui-resizable-column">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText
+                                        type="text"
+                                        placeholder="Fill The Result here"
+                                        (mouseout)="indexPakro(rowIndex)"
+                                        (keydown.Tab)="onKey($event,rowIndex)"
+                                        [(ngModel)]="rowData.result">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.result}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                    </tr>
+                </ng-template>
+            </p-table>
+            <br>
+            <div class="p-grid">
+                <div class="p-col-6 p-offset-3">
+                    <button pButton
+                        style="width:100%;"
+                        class="backBtnStyle"
+                        type="button"
+                        label="SAVE"
+                        (click)="onSubmit()"></button>
+                </div>
             </div>
-        </div>
+        </p-card>
+    </div>
+</div>
+
+<div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+        <button pButton
+            style="width:100%;"
+            class="backBtnStyle"
+            type="button"
+            label="print"
+            (click)="print()"
+            [disabled]="enablePrintButton"></button>
+    </div>
+
+</div>
+
+<div id="print-section"
+    [hidden]="true">
+    <div class="container">
+        <h2 style="text-align:center"> PATEINT REPORT</h2>
+        <table class="table table-striped">
+            <thead>
+                <th *ngFor="let col of cols">
+                    {{ col.header }}
+                </th>
+            </thead>
+            <tbody>
+                <hr>
+                <tr>
+
+                    <h4>Patient Name : {{patientName}}</h4>
+                    <h4>Age : {{age}}</h4>
+                    <h4>ReportName: {{reportName}}</h4>
+                    <h4>Remakrs: {{remarks}}</h4>
+
+                </tr>
+
+                <tr *ngFor="let value of patientReportDetails"
+                    style="overflow: auto;">
+                    <!-- <td></td> -->
+                    <td>{{ value.subtest }}</td>
+                    <td>{{ value.normal }}</td>
+                    <td>{{ value.unit }}</td>
+                    <td>{{ value.result  }}</td>
+                    <!-- <td>{{ value.currency }}</td>
+                    <td>{{ value.operationType }}</td> -->
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 </div>

@@ -1,6 +1,9 @@
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { SharedService } from '../shared.service';
+// import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
+// import { EventEmitter } from 'protractor';
 
 @Component({
   selector: "app-process-reports",
@@ -11,11 +14,19 @@ export class ProcessReportsComponent implements OnInit {
   totalRecords = 0;
   pateintDetails = [];
   cols = [];
-  constructor(private router: Router,private _adService:AddReportDataService) { }
+  labtestId;
+  empty = false;
+  // @Output()data = new EventEmitter();
+  // data;
+  data;
+
+  constructor(private router: Router, private _adService: AddReportDataService,private sharedService:SharedService) { }
 
   ngOnInit() {
     this.cols = [
-      { field: "id", header: "ID" },
+      { field: "patientId", header: "Patient ID" },
+      { field: "labtestId", header: "Lab Test ID" },
+      { field: "labtestName", header: "Lab Test Name" },
       { field: "name", header: "Patient Name" },
       { field: "cnic", header: "Cnic" },
       { field: "phoneNo", header: "Phone Number" },
@@ -23,7 +34,6 @@ export class ProcessReportsComponent implements OnInit {
       { field: "gender", header: "Gender" },
       { field: "address", header: "Address" },
       { field: "status", header: "LabTest Status" },
-      { field: "registrationDate", header: "Registration Date" }
     ];
 
     this.getLabTestProcessPatients();
@@ -31,17 +41,27 @@ export class ProcessReportsComponent implements OnInit {
   backToShowOrProcessReports() {
     this.router.navigate(["/showORprocessReport/"]);
   }
-  processReportAgainstsPatientId(id: any) {
-    this.router.navigate(["/ProcessReportAgainstPatientComponent/"+id]);
-   }
+  processReportAgainstsPatientId(value, patientId) {
 
-  getLabTestProcessPatients(){
+    this.data = value;
+    this.sharedService.changeData(this.data);
+      this.router.navigate(["/processReportsAgainstsPatient/" + patientId]);
+  }
+
+  getLabTestProcessPatients() {
     this._adService.getAllPateints().subscribe(response => {
+    
+      if(response.length){
+        this.empty = false;
+      }
+      this.empty = true
       this.pateintDetails = [];
       console.log(response);
       response.map(value => {
         this.pateintDetails.push({
-          id: value.id,
+          labtestId: value.id,
+          patientId: value.patientLab.id,
+          labtestName: value.labtestName,
           name: value.patientLab.name,
           cnic: value.patientLab.cnic,
           phoneNo: value.patientLab.phoneNo,
@@ -51,6 +71,8 @@ export class ProcessReportsComponent implements OnInit {
           status: value.status
         });
       });
+
+      this.totalRecords = this.pateintDetails.length;
     });
   }
 }

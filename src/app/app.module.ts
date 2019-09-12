@@ -32,6 +32,7 @@ import {ToastModule} from 'primeng/toast';
 import { BlockUIModule } from 'primeng/blockui';
 import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddLabtestformComponent } from './add-labtestform/add-labtestform.compo
     ProcessReportAgainstPatientComponent,
     MonitorQuickViewComponent,
     MainLabtestComponent,
-    AddLabtestformComponent
+    AddLabtestformComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { AddLabtestformComponent } from './add-labtestform/add-labtestform.compo
     TableModule,
     TooltipModule,
     ToastModule,
-    BlockUIModule
+    BlockUIModule,
+    ProgressSpinnerModule
 
     //  AccordionModule
   ],
