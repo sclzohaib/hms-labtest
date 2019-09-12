@@ -7,43 +7,47 @@
     color: 'green',
     'line-height': '0px'
   }">
-    <div class="ui-g ui-fluid">
-        <!-- <div [hidden]="!isLoading">
+  <div class="ui-g ui-fluid">
+    <div [hidden]="isLoading">
       <div class="ui-g">
-        <div  class="ui-lg-12 ui-md-3 ui-sm-12">
-          <div [ngStyle]="{ marginLeft: '40%' }">
-          <p-progressSpinner ></p-progressSpinner>
-        </div>
+         <div class="ui-md-4 ui-lg-4 ui-sm-12">
+        <p-progressSpinner [style]="{height: '80px',marginLeft:'558px'}"></p-progressSpinner>
         </div>
       </div>
-    </div> -->
-        <div style="width:100%;">
-            <div class="ui-g">
-                <div class="ui-lg-3 ui-md-6 ui-sm-12">
+    </div>
 
-                    <label style="color:rgb(127, 128, 126)">Patient ID:
-            <span style="color:rgb(17, 17, 17)"> {{ id }}</span></label>
+  
 
-                </div>
-                <div class="ui-lg-3 ui-md-6 ui-sm-12">
+    <div style="width:100%;">
+      <div class="ui-g">
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
 
-                    <label style="color:rgb(127, 128, 126)">Patient Name:
+          <label style="color:rgb(127, 128, 126)">Patient ID:
+            <span style="color:rgb(17, 17, 17)"> {{ patientId }}</span></label>
+
+        </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+
+          <label style="color:rgb(127, 128, 126)">Patient Name:
             <span style="color:rgb(17, 17, 17)"> {{ name | titlecase  }}</span></label>
 
-                </div>
-                <div class="ui-lg-3 ui-md-6 ui-sm-12">
+        </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
 
-                    <label style="color:rgb(127, 128, 126)">Phone Number: <span style="color:rgb(17, 17, 17)"> {{ number }}</span>
+          <label style="color:rgb(127, 128, 126)">Age : <span style="color:rgb(17, 17, 17)"> {{ age }}</span>
           </label>
 
-                </div>
-                <div class="ui-lg-3 ui-md-6 ui-sm-12">
-
-                    <label style="color:rgb(127, 128, 126)">Registration: </label>
-                    <span style="color:rgb(17, 17, 17);">{{ registration }}</span>
-
-                </div>
-            </div>
         </div>
+        <div class="ui-lg-3 ui-md-6 ui-sm-12">
+
+          <label style="color:rgb(127, 128, 126)">LabTest: </label>
+          <span style="color:rgb(17, 17, 17);font-weight: bold">{{ labtestName }}</span>
+
+        </div>
+      </div>
     </div>
+  </div>
 </p-card>
+<div [hidden]="true">
+  <app-process-reports></app-process-reports>
+</div>

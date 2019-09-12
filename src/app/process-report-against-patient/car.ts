@@ -1,7 +1,8 @@
 export interface Car {
+  id?;
   subtest?;
-  normalvalue?;
+  normal?;
   brand?;
-  unitvalue?;
+  unit?;
   result?;
 }

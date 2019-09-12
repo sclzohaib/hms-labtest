@@ -18,7 +18,7 @@ export class LabtestComponent implements OnInit {
   subTest: SelectItem[];
   unit: SelectItem[];
   normalValue: SelectItem[];
-  LabTestDropdown: SelectItem[] = [];
+  selectedLabTest =[];
   departmentName;
   subtestName;
   normalvalueName;
@@ -27,7 +27,6 @@ export class LabtestComponent implements OnInit {
   sendReport = [];
   labtestName;
   deptName;
-
   reportObj: Report;
 
   constructor(private _addService: AddReportDataService,private router:Router,private labServ: LabtestServiceService) {}
@@ -69,6 +68,8 @@ export class LabtestComponent implements OnInit {
       });
     });
   }
+
+
   getUnit() {
     this.unit = [];
     this._addService.getUnit().subscribe(unit => {
@@ -80,6 +81,8 @@ export class LabtestComponent implements OnInit {
       });
     });
   }
+
+
   getNormalValue() {
     this.normalValue = [];
     this._addService.getNormalValue().subscribe(normalvalue => {
@@ -95,20 +98,24 @@ export class LabtestComponent implements OnInit {
   getLabTestsInDropDown(){
     this.labServ.getlabtest().subscribe(data =>{
       data.map(d =>{
-        this.LabTestDropdown.push({
+        this.selectedLabTest.push({
           label:d.name,
-          value:d
+          value:d.name
         })
       }
 
       )
     })
   }
+
+
   showSelectedDept() {
     this.deptName = this.departmentName.departmentName;
     this.reportObj.departmentName = this.deptName;
     console.log("haan bhai men select hogyaaaaa haaaan", this.deptName);
   }
+
+
   showReport() {
     let ReportDetails = {
       subtestName: this.subtestName.subtestName,
@@ -128,9 +135,9 @@ export class LabtestComponent implements OnInit {
     this.reportObj.labtestName = this.labtestName;
     this.reportObj.reportDetails.push(postReport);
 
-    this.departmentName = "";
+    // this.departmentName = "";
     this.unitName = "";
-    this.labtestName = "";
+    // this.labtestName = "";
     this.subtestName = "";
     this.normalvalueName = "";
 
@@ -138,13 +145,13 @@ export class LabtestComponent implements OnInit {
   }
 
   postReport() {
-
     // this.reportObj.departmentName = this.departmentName.departmentName;
     // this.reportObj.labtestName = this.labtestName;
     this._addService.postSampleReport(this.reportObj).subscribe((res=>{
         console.log("================================="+res)
         this.generateReport = [];
         this.departmentName.departmentName = "";
+        this.deptName = "";
         this.labtestName = "";
     }))
     console.log(this.reportObj);

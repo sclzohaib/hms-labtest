@@ -44,6 +44,7 @@ export class SubTestComponent implements OnInit {
     if (this.checkAction == "add") {
       this._addserivice.addSubtest(value).subscribe(res => {
         this.valueChange.emit();
+      
         console.log("this is the response", res);
       });
     } else if (this.checkAction == "edit") {
