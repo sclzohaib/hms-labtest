@@ -1,25 +1,51 @@
-<nav class="navbar navbarCss" style="padding:0px;">
-  <div class="container-fluid" style="background-color:#479761">
-      <div class="navbar-header">
-          <a class="navbar-brand" style="color:white;font-weight: bold;text-align: center">BARKHIA HOSPITAL</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbarCss"
+    style="padding:0px;">
+    <div class="container-fluid"
+        style="background-color:#479761">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+                href="mainscreen"
+                routerLink="mainscreen"
+                routerLinkActive="active"
+                style="color:white;font-weight: bold;text-align: center">BARKHIA HOSPITAL</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
 
-          <a *ngIf="isHide" class="navbar-brand">
-              <li>UserName: {{userName}}</li>
-          </a>
-          <a *ngIf="isHide" class="navbar-brand" href="mainscreen" routerLink="mainscreen" routerLinkActive="active">
+            <a *ngIf="isHide"
+                class="navbar-brand">
+                <li>UserName: {{userName}}</li>
+            </a>
+          
 
-              <li>MainScreen</li>
+            <li *ngIf="isHide"
+                class="nav-item dropdown changeHover">
+                <a class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbardrop"
+                    data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i> Profile
+                </a>
+                <div class="dropdown-menu">
+                    <a *ngIf="isHide"
+                        class="navbar-brand"
+                        href="showOrProcessReports"
+                        routerLink="showOrProcessReports"
+                        routerLinkActive="active">
+                    
+                        <li>&#160;&#160;&#160;&#160;&#160;MainScreen</li>
+                    
+                    </a>
+                    <a *ngIf="isHide"
+                        class="navbar-brand logout"
+                        href="#">
+            <li (click)="clearCache()"
+                style="text-align:center">&#160;&#160;&#160;&#160;&#160;<i class="glyphicon glyphicon-log-out"></i>Logout</li>
+            </a>
 
-          </a>
-          <div *ngIf="isHide">
-              <a class="navbar-brand logout" href="#">
-                  <li (click)="clearCache()">logOut</li>
-              </a>
+    </div>
+    </li>
 
-          </div>
-      </ul>
+    </ul>
 
-  </div>
+    </div>
 </nav>

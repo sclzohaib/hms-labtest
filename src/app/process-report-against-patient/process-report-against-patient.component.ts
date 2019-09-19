@@ -165,18 +165,6 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
 
   }
 
-  // @HostListener('window:afterprint', ['$event'])
-  // onAfterPrint(event) {
-  //   console.log('After print',this.labTestId);
-  //   this._addService.UpdateLabTestStatusOfPatient(this.labTestId).subscribe((res=>{
-  //     console.log(res);
-  //   }))
-  // }
-
-  // @HostListener('afterprint', ['$event'])
-  // onafterprint(event){
-  //   console.log(event)
-  // }
 
 
   print(): void {

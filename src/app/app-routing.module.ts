@@ -6,10 +6,14 @@ import { ShowORprocessReportComponent } from './show-orprocess-report/show-orpro
 import { ProcessReportAgainstPatientComponent } from './process-report-against-patient/process-report-against-patient.component';
 import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
+import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.component';
 
 const routes: Routes = [
   {
-    path: '', component: ShowORprocessReportComponent
+    path: '', component: HmsLandingPageComponent
+  },
+  {
+    path: 'showOrProcessReports', component: ShowORprocessReportComponent
   },
   {
     path: "labtestComponent", component: LabtestComponent

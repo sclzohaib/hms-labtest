@@ -12,16 +12,23 @@
 
 .navbarCss {
     background-color: #479761 !important;
+    margin-bottom: 0px;
+}
+
+.dropdown-menu{ 
+
+background-color: #479761 !important;
+}
+.nav>li>a {
+    color: white;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color:#479761;
 }
 
 
-/* a.logout:hover {
-    border-color: teal;
-    border-style: solid;
-    border-width: 1px;
-} */
 
-
-/* a.username:hover {
-    text-decoration: none;
-} */
