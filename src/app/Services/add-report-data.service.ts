@@ -8,6 +8,7 @@ import { Observable, Observer } from 'rxjs';
 })
 export class AddReportDataService {
 
+  tokenUrl = 'http://localhost:8080/';
   constructor(private http: HttpClient) {
 
   }
@@ -70,4 +71,15 @@ export class AddReportDataService {
   public UpdateLabTestStatusOfPatient(id:any):Observable  <any>{
     return this.http.get(environment.baseurl +"api/patientReport/changeStatus/"+id)
   }
+  checkUserandPass(name: string, pwd: string): Observable<any> {
+    let user = {
+      username: name,
+      password: pwd
+    }
+
+    return this.http.post(this.tokenUrl+"token/generate-token",user);
+
+   
+  }
+
 }

@@ -33,6 +33,7 @@ import { BlockUIModule } from 'primeng/blockui';
 import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     MonitorQuickViewComponent,
     MainLabtestComponent,
     AddLabtestformComponent,
+    HmsLandingPageComponent,
     
   ],
   imports: [
