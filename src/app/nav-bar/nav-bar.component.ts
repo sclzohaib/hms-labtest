@@ -14,6 +14,7 @@ export class NavBarComponent implements OnInit {
   item = sessionStorage.getItem('token');
   constructor(private router: Router) { }
 
+
   // tslint:disable-next-line: use-life-cycle-interface
   ngDoCheck() {
     //console.log('Ng Do Check  is Checking the availability of the token');
@@ -34,6 +35,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     // sessionStorage.removeItem("token");
+
     if (this.item != null) {
       this.isHide = true;
     } else {

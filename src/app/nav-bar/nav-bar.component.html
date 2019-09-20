@@ -12,34 +12,37 @@
         <ul class="nav navbar-nav navbar-right">
 
             <a *ngIf="isHide"
-                class="navbar-brand">
+                class="navbar-brand name"
+                style="cursor:pointer"
+                >
                 <li>UserName: {{userName}}</li>
             </a>
-          
+
 
             <li *ngIf="isHide"
                 class="nav-item dropdown changeHover">
-                <a class="nav-link dropdown-toggle"
+                <a class="nav-link"
                     href="#"
                     id="navbardrop"
                     data-toggle="dropdown">
                     <i class="glyphicon glyphicon-user"></i> Profile
-                </a>
+                </a>    
                 <div class="dropdown-menu">
                     <a *ngIf="isHide"
                         class="navbar-brand"
                         href="showOrProcessReports"
                         routerLink="showOrProcessReports"
                         routerLinkActive="active">
-                    
-                        <li>&#160;&#160;&#160;&#160;&#160;MainScreen</li>
-                    
-                    </a>
-                    <a *ngIf="isHide"
-                        class="navbar-brand logout"
-                        href="#">
-            <li (click)="clearCache()"
-                style="text-align:center">&#160;&#160;&#160;&#160;&#160;<i class="glyphicon glyphicon-log-out"></i>Logout</li>
+
+            <li>&#160;&#160;&#160;&#160;&#160;MainScreen</li>
+
+            </a>
+            <a *ngIf="isHide"
+                class="navbar-brand logout"
+                href="#">
+                <li (click)="clearCache()"
+                    style="text-align:center">&#160;&#160;&#160;&#160;&#160;<i
+                        class="glyphicon glyphicon-log-out"></i><span>Logout</span></li>
             </a>
 
     </div>

@@ -25,6 +25,7 @@ export class HmsLandingPageComponent implements OnInit {
 
   ngOnInit() {
     // this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
+    this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
   }
   check(uname: string, p: string) {
     

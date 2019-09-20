@@ -10,10 +10,13 @@ import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.com
 
 const routes: Routes = [
   {
-    path: '', component: HmsLandingPageComponent
+    path: 'showOrProcessReports', component: ShowORprocessReportComponent
   },
   {
-    path: 'showOrProcessReports', component: ShowORprocessReportComponent
+    path: 'home', component: HmsLandingPageComponent
+  },
+  {
+    path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: "labtestComponent", component: LabtestComponent
