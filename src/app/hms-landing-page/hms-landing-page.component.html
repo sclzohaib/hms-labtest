@@ -1,10 +1,18 @@
 <p-toast></p-toast>
-<div class="wrap">
+
+
+<!--<div class="wrap">
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-10 offset-sm-1 col-md-4 offset-md-5 col-lg-offset-6 col-lg-4"
+      <div class="home-message">
+        <p>WELCOME TO <span style="font-size:70px"><b>BARKHIA HOSPITAL</b></span> </p>
+
+      </div>
+
+      <div class="col-sm-10   offset-sm-1 col-md-offset-9 col-lg-offset-9 col-lg-4"
         id="loginForm">
+
         <div class="card card-signin my-5">
           <div class="card-body">
             <h2 style="text-align: center;font-weight:bold;color:rgb(132, 190, 132);">SIGN IN</h2>
@@ -41,8 +49,87 @@
               <hr class="my-4">
             </form>
           </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>-->
+<div class="wrap">
+  <div class="ui-g">
+    <div class="ui-lg-4 ui-md-4 ui-sm-12 col-lg-offset-6 col-md-offset-6">
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <form class="login100-form validate-form">
+              <span class="login100-form-title p-b-34 p-t-27">
+                <b>Log in</b>
+              </span>
+
+              <div class="wrap-input100 validate-input"
+                data-validate="Enter username">
+                <input class="input100"
+                  type="text"
+                  name="username"
+                  #u1
+                  placeholder="Username">
+                <span class="focus-input100"
+                  data-placeholder="&#xf207;"></span>
+              </div>
+
+              <div class="wrap-input100 validate-input"
+                data-validate="Enter password">
+                <input class="input100"
+                  type="password"
+                  name="pass"
+                  #p2
+                  placeholder="Password">
+                <span class="focus-input100"
+                  data-placeholder="&#xf191;"></span>
+              </div>
+
+
+              <div class="container-login100-form-btn">
+                <button (click)="console(u1.value, p2.value)"
+                  class="login100-form-btn">
+                  <b>Login</b>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+
+
+    <div class="ui-lg-8 ui-md-8 ui-sm-12">
+      <div class="ui-g">
+        <div class="ui-lg-10 ui-sm-12" style="margin-top:4%">
+          <h1 class="entry-title">WELCOME TO BARKHIA HOSPITAL</h1><br><br>
+          <h2  style="margin-top:4%" class="entry-title">LAB APPLICATION</h2>
+        </div>
+      </div>
+      
+      <div class="ui-g makeItCenter">
+        <div class="ui-lg-4 ui-md-4 ui-sm-12 col-lg-offset-2">
+          <!-- <br><br><br> -->
+          <a href="#0"
+            class="bttnOpd">OPD</a>
+        </div>
+        <div class="ui-lg-4 ui-md-4 ui-sm-12 col-lg-offset-2">
+          <!-- <br><br><br> -->
+          <a href="#0"
+            class="bttnlab">LAB</a>
+        </div>
+        <div class="ui-lg-4 ui-md-4 ui-sm-12 col-lg-offset-2">
+          <!-- <br><br><br> -->
+          <a href="#0"
+            class="bttnPharmacy">PHARMACY</a>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
