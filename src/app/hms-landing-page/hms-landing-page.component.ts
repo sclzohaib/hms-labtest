@@ -27,6 +27,11 @@ export class HmsLandingPageComponent implements OnInit {
     // this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
     this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
   }
+
+    console(v1,v2){
+      console.log(v1,v2)
+    }
+
   check(uname: string, p: string) {
     
     this.service.checkUserandPass(uname, p).subscribe(

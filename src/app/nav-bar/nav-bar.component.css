@@ -11,13 +11,13 @@
 }
 
 .navbarCss {
-    background-color: #479761 !important;
+    background-color: #075727e3 !important;
     margin-bottom: 0px;
 }
 
 .dropdown-menu{ 
 
-background-color: #479761 !important;
+background-color: #075727e3 !important;
 
 }
 .nav>li>a {
@@ -29,7 +29,7 @@ background-color: #479761 !important;
 }
 
 .nav>li>a:focus, .nav>li>a:hover{
-    background-color:#479761;
+    background-color:#075727e3;
     font-size: 20px;
 }
 
@@ -39,6 +39,5 @@ background-color: #479761 !important;
 /* .hover:hover{
     font-size: 20%;
 } */
-
 
 
