@@ -13,10 +13,10 @@ const routes: Routes = [
     path: 'showOrProcessReports', component: ShowORprocessReportComponent
   },
   {
-    path: 'home', component: HmsLandingPageComponent
+    path: 'lab', component: HmsLandingPageComponent
   },
   {
-    path: '', redirectTo: '/home', pathMatch: 'full'
+    path: '', redirectTo: '/lab', pathMatch: 'full'
   },
   {
     path: "labtestComponent", component: LabtestComponent
