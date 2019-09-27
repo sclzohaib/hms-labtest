@@ -34,6 +34,7 @@ import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.component';
+import { ExternalLinkDirective } from './hms-landing-page/external-link.directive';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.com
     MainLabtestComponent,
     AddLabtestformComponent,
     HmsLandingPageComponent,
+    ExternalLinkDirective
     
   ],
   imports: [
@@ -72,6 +74,7 @@ import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.com
     ToastModule,
     BlockUIModule,
     ProgressSpinnerModule
+    
 
     //  AccordionModule
   ],

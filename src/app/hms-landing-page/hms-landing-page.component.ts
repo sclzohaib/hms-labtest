@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { AddReportDataService } from '../Services/add-report-data.service';
 import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-hms-landing-page',
@@ -15,6 +16,9 @@ export class HmsLandingPageComponent implements OnInit {
   userName;
   userType;
   getType
+  labUrl;
+  opdUrl;
+  pharmacyUrl;
 
   constructor(
     private router: Router,
@@ -22,10 +26,13 @@ export class HmsLandingPageComponent implements OnInit {
     private service: AddReportDataService,
     private _location: Location
   ) { }
-
   ngOnInit() {
-    // this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
-    this.deleteAllHistory = this._location.isCurrentPathEqualTo('');
+    // this.nav.hide();
+    this.deleteAllHistory = this._location.isCurrentPathEqualTo('lab');
+    this.labUrl = environment.labUrl;
+    this.opdUrl = environment.opdUrl;
+    this.pharmacyUrl = environment.pharmacyUrl;
+
   }
 
     console(v1,v2){
