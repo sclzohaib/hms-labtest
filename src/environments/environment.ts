@@ -3,12 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  
   production: false,
+  tokenURL: 'http://localhost:8080/',
   baseurl:"http://localhost:8082/",
   //  baseUrl: 'http://localhost:8080/',
   opdUrl: 'http://localhost:4200/opd',
   labUrl: 'http://localhost:4201/lab',
-  pharmacyUrl: 'http://localhost:4203/pharmacy'
+  pharmacyUrl: 'http://localhost:4202/pharmacy'
 };
 
 /*

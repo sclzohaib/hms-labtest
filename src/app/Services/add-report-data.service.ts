@@ -77,7 +77,7 @@ export class AddReportDataService {
       password: pwd
     }
 
-    return this.http.post(this.tokenUrl+"token/generate-token",user);
+    return this.http.post(environment.tokenURL+"token/generate-token",user);
 
    
   }
