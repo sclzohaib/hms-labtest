@@ -7,6 +7,7 @@ import { SelectItem } from "primeng/components/common/selectitem";
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { typeWithParameters } from "@angular/compiler/src/render3/util";
 import { LabtestServiceService } from '../main-labtest/labtest-service.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-labtest",
@@ -29,7 +30,7 @@ export class LabtestComponent implements OnInit {
   deptName;
   reportObj: Report;
 
-  constructor(private _addService: AddReportDataService,private router:Router,private labServ: LabtestServiceService) {}
+  constructor(private _addService: AddReportDataService, private router: Router, private labServ: LabtestServiceService, private messageService:MessageService) {}
 
   ngOnInit() {
     this.reportObj = new Report();
@@ -147,13 +148,23 @@ export class LabtestComponent implements OnInit {
   postReport() {
     // this.reportObj.departmentName = this.departmentName.departmentName;
     // this.reportObj.labtestName = this.labtestName;
-    this._addService.postSampleReport(this.reportObj).subscribe((res=>{
+    this._addService.postSampleReport(this.reportObj).subscribe(res=>{
         console.log("================================="+res)
         this.generateReport = [];
         this.departmentName.departmentName = "";
         this.deptName = "";
         this.labtestName = "";
-    }))
+        this.messageService.add({
+        severity: "success",
+        summary: "Added Succesfully"
+      });
+    }), error => {
+      console.log(error);
+      this.messageService.add({
+        severity: "error",
+        summary: "Error Found"
+      });
+    }
     console.log(this.reportObj);
   }
 
