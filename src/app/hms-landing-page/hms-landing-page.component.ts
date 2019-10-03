@@ -19,6 +19,7 @@ export class HmsLandingPageComponent implements OnInit {
   labUrl;
   opdUrl;
   pharmacyUrl;
+  showErrorMessage: Boolean = false;
 
   constructor(
     private router: Router,
@@ -44,39 +45,36 @@ export class HmsLandingPageComponent implements OnInit {
     this.service.checkUserandPass(uname, p).subscribe(
       res => {
         console.log('toker', res);
-
-        // sessionStorage.setItem('token', res.result.token);
-        // var username = sessionStorage.setItem('username', res.result.username);
-        // var userType = sessionStorage.setItem('userType', res.result.userType);
-        // var getType = sessionStorage.getItem('userType').toUpperCase();
-
-
          var getType = res.result.userType.toUpperCase();
 
         if (getType == "OPD" || getType=="PHARMACY") {
             this.errorMethod("Unauthorized for LAB application")
+          this.showErrorMessage = true;
         }
 
 
         else if (getType == "LAB") {
           this.credentials(res);
           this.succesMethod();
+          this.showErrorMessage = false;
           this.goToLab();
         }
 
         else if(getType="ADMIN"){
           this.credentials(res);
           this.succesMethod();
+          this.showErrorMessage = false;
           this.goToLab();
         }
 
         else {
-  
+          this.showErrorMessage = true;
          this.errorMethod("Not Authorized");
         }
 
       },
       error => {
+        this.showErrorMessage = true;
         console.log(error);
        this.errorMethod("Not Authorized")
       }
