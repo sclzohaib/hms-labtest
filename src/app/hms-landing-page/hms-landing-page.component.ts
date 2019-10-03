@@ -54,7 +54,7 @@ export class HmsLandingPageComponent implements OnInit {
          var getType = res.result.userType.toUpperCase();
 
         if (getType == "OPD" || getType=="PHARMACY") {
-            this.errorMethod("Unauthorized for "+getType+" application")
+            this.errorMethod("Unauthorized for LAB application")
         }
 
 
