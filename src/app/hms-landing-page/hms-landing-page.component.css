@@ -84,7 +84,9 @@ textarea:focus, input:focus {
   border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
+
+ input:focus::-webkit-input-placeholder { color:transparent; }
+
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
@@ -279,11 +281,11 @@ iframe {
 }
 
 .focus-input100::after {
-  font-family: Material-Design-Iconic-Font;
+  /* font-family: Material-Design-Iconic-Font; */
   font-size: 22px;
   color: #fff;
 
-  content: attr(data-placeholder);
+  /* content: attr(data-placeholder); */
   display: block;
   width: 100%;
   position: absolute;
@@ -351,7 +353,7 @@ iframe {
 
 .label-checkbox100::before {
   content: "\f26b";
-  font-family: Material-Design-Iconic-Font;
+  /* font-family: Material-Design-Iconic-Font; */
   font-size: 13px;
   color: transparent;
 
@@ -3533,7 +3535,7 @@ iframe {
     text-align: center;
     max-width: 72%;
     margin: 0 auto;
-    font-size: 49px;
+    font-size: 43px;
     font-weight: 400;
     line-height: 1.2;
     /* margin-top: 10%; */
@@ -3610,18 +3612,18 @@ iframe {
 
 
 .bttnPharmacy{
-	 font-size: 30px;
-     letter-spacing: 2px;
-      text-transform: uppercase;
+	  font-size: 30px;
+	 letter-spacing: 2px;
+	 text-transform: uppercase;
 	 display: inline-block;
 	 text-align: center;
 	 width: 270px;
 	 font-weight: bold;
 	 padding: 14px 0px;
-	 /* border: 3px solid#990962e3; */
-	
+	 /* border: 3px solid#075727e3; */
+	 border-radius: 2px;
 	 position: relative;
-     
+	 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
 
      
 }

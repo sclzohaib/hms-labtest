@@ -40,33 +40,59 @@ export class HmsLandingPageComponent implements OnInit {
     }
 
   check(uname: string, p: string) {
-    
+    // var output = this.service.checkUserandPass(uname, p);
     this.service.checkUserandPass(uname, p).subscribe(
       res => {
         console.log('toker', res);
-        sessionStorage.setItem('token', res.result.token);
-         this.token = sessionStorage.setItem('token', res.result.token);
-         this.userName = sessionStorage.setItem('username', res.result.username);
-         this.userType = sessionStorage.setItem('userType', res.result.userType);
-         this.getType = sessionStorage.getItem('userType').toUpperCase();
 
-        this.succesMethod();
-        this.goToLabApplication();
+        // sessionStorage.setItem('token', res.result.token);
+        // var username = sessionStorage.setItem('username', res.result.username);
+        // var userType = sessionStorage.setItem('userType', res.result.userType);
+        // var getType = sessionStorage.getItem('userType').toUpperCase();
+
+
+         var getType = res.result.userType.toUpperCase();
+
+        if (getType == "OPD" || getType=="PHARMACY") {
+            this.errorMethod("Unauthorized for "+getType+" application")
+        }
+
+
+        else if (getType == "LAB") {
+          this.credentials(res);
+          this.succesMethod();
+          this.goToLab();
+        }
+
+        else if(getType="ADMIN"){
+          this.credentials(res);
+          this.succesMethod();
+          this.goToLab();
+        }
+
+        else {
+  
+         this.errorMethod("Not Authorized");
+        }
 
       },
       error => {
         console.log(error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Service Message',
-          detail: 'Wrong username and password'
-        });
+       this.errorMethod("Not Authorized")
       }
     );
   }
 
+
+  credentials(res) {
+    sessionStorage.setItem('token', res.result.token);
+    this.userName = sessionStorage.setItem('username', res.result.username);
+    this.userType = sessionStorage.setItem('userType', res.result.userType);
+    this.getType = sessionStorage.getItem('userType').toUpperCase();
+   
+  }
+
   succesMethod() {
-    
     this.messageService.add({
       severity: 'success',
       summary: 'Service Message',
@@ -75,12 +101,80 @@ export class HmsLandingPageComponent implements OnInit {
   }
 
 
-  goToLabApplication() {
 
+  errorMethod(msg:String){
+    this.messageService.add({
+      severity: 'error',
+      summary: msg.toString(),
+      detail: 'retry login'
+    });
+  }
+
+
+ 
+
+
+  // goToOpd() {
+  //   setTimeout(() => {
+  //     window.location.href = "http://localhost:8080/mainscreen"
+  //   }, 1000);
+  // }
+
+
+  
+  // goToPharmacy() {
+  //   setTimeout(() => {
+  //     window.location.href = "http://localhost:8081/sales"
+  //   }, 1000);
+  // }
+
+  goToLab() {
     setTimeout(() => {
-      this.router.navigate(['/showOrProcessReports'])
+      this.router.navigate(['showOrProcessReports']);
     }, 1000);
   }
+
+  // check(uname: string, p: string) {
+    
+  //   this.service.checkUserandPass(uname, p).subscribe(
+  //     res => {
+  //       console.log('toker', res);
+  //       sessionStorage.setItem('token', res.result.token);
+  //        this.token = sessionStorage.setItem('token', res.result.token);
+  //        this.userName = sessionStorage.setItem('username', res.result.username);
+  //        this.userType = sessionStorage.setItem('userType', res.result.userType);
+  //        this.getType = sessionStorage.getItem('userType').toUpperCase();
+
+  //       this.succesMethod();
+  //       this.goToLabApplication();
+
+  //     },
+  //     error => {
+  //       console.log(error);
+  //       this.messageService.add({
+  //         severity: 'error',
+  //         summary: 'Service Message',
+  //         detail: 'Wrong username and password'
+  //       });
+  //     }
+  //   );
+  // }
+
+  // succesMethod() {
+    
+  //   this.messageService.add({
+  //     severity: 'success',
+  //     summary: 'Service Message',
+  //     detail: 'Login Succesful'
+  //   });
+  // }
+
+
+  // goToLabApplication() {
+  //   setTimeout(() => {
+  //     this.router.navigate(['/showOrProcessReports'])
+  //   }, 1000);
+  // }
  
 
 

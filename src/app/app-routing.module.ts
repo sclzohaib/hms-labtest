@@ -10,13 +10,13 @@ import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.com
 
 const routes: Routes = [
   {
-    path: 'showOrProcessReports', component: ShowORprocessReportComponent
+    path: '', redirectTo: '/lab', pathMatch: 'full'
   },
-  { 
+  {
     path: 'lab', component: HmsLandingPageComponent
   },
   {
-    path: '', redirectTo: '/lab', pathMatch: 'full'
+    path: 'showOrProcessReports', component: ShowORprocessReportComponent
   },
   {
     path: "labtestComponent", component: LabtestComponent
@@ -29,10 +29,10 @@ const routes: Routes = [
     path: "processReportsAgainstsPatient/:id", component: ProcessReportAgainstPatientComponent
   },
   {
-    path: "mainLabtestComponent", component:MainLabtestComponent
+    path: "mainLabtestComponent", component: MainLabtestComponent
   },
   {
-    path: "addlabtestFormComponent", component : AddLabtestformComponent
+    path: "addlabtestFormComponent", component: AddLabtestformComponent
   }
 
 ];
