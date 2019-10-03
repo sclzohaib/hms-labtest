@@ -7,6 +7,7 @@ import { ProcessReportAgainstPatientComponent } from './process-report-against-p
 import { MainLabtestComponent } from './main-labtest/main-labtest.component';
 import { AddLabtestformComponent } from './add-labtestform/add-labtestform.component';
 import { HmsLandingPageComponent } from './hms-landing-page/hms-landing-page.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -16,23 +17,23 @@ const routes: Routes = [
     path: 'lab', component: HmsLandingPageComponent
   },
   {
-    path: 'showOrProcessReports', component: ShowORprocessReportComponent
+    path: 'showOrProcessReports', canActivate: [AuthGuardService], component: ShowORprocessReportComponent
   },
   {
-    path: "labtestComponent", component: LabtestComponent
+    path: "labtestComponent", canActivate: [AuthGuardService], component: LabtestComponent
   },
   {
-    path: 'showORprocessReport', component: ShowORprocessReportComponent
+    path: 'showORprocessReport', canActivate: [AuthGuardService],component: ShowORprocessReportComponent
   }, {
-    path: "processReports", component: ProcessReportsComponent
+    path: "processReports", canActivate: [AuthGuardService],component: ProcessReportsComponent
   }, {
-    path: "processReportsAgainstsPatient/:id", component: ProcessReportAgainstPatientComponent
+    path: "processReportsAgainstsPatient/:id", canActivate: [AuthGuardService],component: ProcessReportAgainstPatientComponent
   },
   {
-    path: "mainLabtestComponent", component: MainLabtestComponent
+    path: "mainLabtestComponent", canActivate: [AuthGuardService],component: MainLabtestComponent
   },
   {
-    path: "addlabtestFormComponent", component: AddLabtestformComponent
+    path: "addlabtestFormComponent", canActivate: [AuthGuardService],component: AddLabtestformComponent
   }
 
 ];
