@@ -39,7 +39,10 @@ export class MainLabtestComponent implements OnInit {
           'testdetails': value.details
         })
       })
-    }, error => { console.log(error) })
+    }, error => { 
+      // console.log(error) 
+    }
+      )
     this.cols = [
       { field: 'id', header: "ID" },
       // { field: 'category', header: 'Test Category' },
@@ -54,7 +57,8 @@ export class MainLabtestComponent implements OnInit {
   inactive(id,name) {
     this.delete=true;
     this.labServ.deletelabtest(id).subscribe((response) => {
-      console.log(response)
+      
+      (response)
       this.tests = [];
       !response.length?this.empty=true:"";
       this.delete = false;
@@ -72,7 +76,8 @@ export class MainLabtestComponent implements OnInit {
 
 
       this.messageService.add({severity:'success', summary:'Service Message', detail:name+' successfully deleted!'});
-    },error=>{console.log(error)
+    },error=>{
+      (error)
 
       this.delete=false;
       this.messageService.add({severity:'error', summary:'Service Message', detail:'Error deleting Lab Test!'});

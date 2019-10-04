@@ -28,7 +28,7 @@ export class DepartmentComponent implements OnInit {
       this.heading = "EDIT DEPARMENT";
       // if (this.department.departmentName != undefined) {
         if (this.editDepartment.departmentName != "") {
-          console.log("======================>", this.editDepartment);
+          // console.log("======================>", this.editDepartment);
           this.department.departmentName = this.editDepartment.departmentName;
 
       }
@@ -43,13 +43,13 @@ export class DepartmentComponent implements OnInit {
     if (this.checkAction == "add") {
       this._addService.addDepartment(value).subscribe(res => {
         this.valueChange.emit();
-        console.log(res);
+        // console.log(res);
       });
     } else if (this.checkAction == "edit") {
       let id = this.editDepartment.id;
       this._addService.editDepartment(id, value).subscribe(response => {
         this.valueChange.emit();
-        console.log(response);
+        // console.log(response);
       });
     }
   }

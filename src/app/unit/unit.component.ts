@@ -35,7 +35,7 @@ export class UnitComponent implements OnInit {
     }
     else if(value == "edit")
     {
-      console.log('============>',this.editUnittest);
+      // console.log('============>',this.editUnittest);
       this.display = true;
       this.heading = 'EDIT UNIT';
 
@@ -43,7 +43,7 @@ export class UnitComponent implements OnInit {
 
         if (this.editUnittest.unitName != "")
         {
-          console.log('======================>', this.editUnittest);
+          // console.log('======================>', this.editUnittest);
           this.unit.unitName = this.editUnittest.unitName;
         }
       // }
@@ -56,7 +56,7 @@ export class UnitComponent implements OnInit {
     if(this.checkAction == "add")
     {
       this._addService.addUnits(value).subscribe((res => {
-        console.log("this is the response", res)
+        // console.log("this is the response", res)
         this.valueChange.emit();
       }));
     }
@@ -64,7 +64,7 @@ export class UnitComponent implements OnInit {
     {
       let id = this.editUnittest.id;
         this._addService.editUnit(id,value).subscribe((res=>{
-            console.log("=====>",res);
+            // console.log("=====>",res);
             this.valueChange.emit();
         }))
     }

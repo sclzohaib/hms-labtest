@@ -28,14 +28,14 @@ export class NormalValueComponent implements OnInit {
 
     }
     else if (value == "edit") {
-      console.log("============>", this.normalvalue);
+      // console.log("============>", this.normalvalue);
       this.display = true;
       this.heading = "EDIT NORMAL VALUE";
 
       // if(this.normalvalue.normalvalueName!=undefined){
 
         if (this.editnormalValue.normalvalueName != "") {
-          console.log("======================>", this.normalvalue);
+          // console.log("======================>", this.normalvalue);
 
           this.normalvalue.normalvalueName = this.editnormalValue.normalvalueName;
         // }
@@ -48,13 +48,13 @@ export class NormalValueComponent implements OnInit {
     if (this.checkAction == "add") {
       this._addService.addNormalValues(value).subscribe(res => {
         this.valueChange.emit();
-        console.log(res);
+        // console.log(res);
       });
     } else if (this.checkAction == "edit") {
       let id = this.editnormalValue.id;
       this._addService.editNormalvalue(id, value).subscribe(response => {
         this.valueChange.emit();
-        console.log(response);
+        // console.log(response);
       });
     }
   }
