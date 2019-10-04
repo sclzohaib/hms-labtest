@@ -15,7 +15,7 @@ export class ProcessReportsComponent implements OnInit {
   pateintDetails = [];
   cols = [];
   labtestId;
-  empty = false;
+  empty = true;
   // @Output()data = new EventEmitter();
   // data;
   data;
@@ -54,7 +54,7 @@ export class ProcessReportsComponent implements OnInit {
       if(response.length){
         this.empty = false;
       }
-      this.empty = true
+    
       this.pateintDetails = [];
       // console.log(response);
       response.map(value => {
