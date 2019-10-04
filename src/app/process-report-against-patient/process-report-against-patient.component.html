@@ -172,7 +172,8 @@ unit: 'black'
                         class="backBtnStyle"
                         type="button"
                         label="SAVE"
-                        (click)="onSubmit()"></button>
+                        (click)="onSubmit()"
+                        [disabled]="!remarks.length"></button>
                 </div>
             </div>
         </p-card>
@@ -195,7 +196,7 @@ unit: 'black'
 <div id="print-section"
     [hidden]="true">
     <div class="container">
-        <h2 style="text-align:center"> PATEINT REPORT</h2>
+        <h2 style="text-align:center"> PATIENT REPORT</h2>
         <table class="table table-striped">
             <thead>
                 <th *ngFor="let col of cols">
