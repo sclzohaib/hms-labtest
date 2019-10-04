@@ -1,6 +1,7 @@
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Subtest } from "./Subtest";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-sub-test",
@@ -17,7 +18,7 @@ export class SubTestComponent implements OnInit {
   // labtest object
   subtestObj: Subtest = new Subtest();
 
-  constructor(private _addserivice: AddReportDataService) {}
+  constructor(private _addserivice: AddReportDataService,private messageservice:MessageService) {}
 
   ngOnInit() {}
   showDialog(value: any) {
@@ -44,8 +45,25 @@ export class SubTestComponent implements OnInit {
     if (this.checkAction == "add") {
       this._addserivice.addSubtest(value).subscribe(res => {
         this.valueChange.emit();
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "subtest  successfully added!"
+
+        });
       
-        // console.log("this is the response", res);
+        console.log("this is the response", res);
+      },error=>{
+        this.messageservice.add({
+          key:'a',
+          severity: "error",
+          summary: "error occured",
+          detail: "something went wrong!"
+
+        });
+      
+
       });
     } else if (this.checkAction == "edit") {
       let id = this.editSubtest.id;
@@ -53,7 +71,27 @@ export class SubTestComponent implements OnInit {
       // console.log("this is updtaed subtest", this.subtestObj);
       this._addserivice.editSubtest(id, value).subscribe(res => {
         this.valueChange.emit();
-        // console.log("=====>", res);
+        this.messageservice.add({
+        key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "subtest  successfully edited!"
+
+        });
+      
+        console.log("=====>", res);
+      },error=>{
+
+        this.messageservice.add({
+          key:'a',
+          severity: "error",
+          summary: "error occured",
+          detail: "!something went wrong"
+
+        });
+      
+
+
       });
     }
   }

@@ -5,6 +5,7 @@
 <p-dialog header="" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }" [minX]="70" [style]="{ float: 'top', 'overflow-wrap': 'break-word' }" style="overflow-wrap: break-word"
     [positionTop]="null" [maximizable]="true" [baseZIndex]="10000" [closeOnEscape]="true" [closable]="true">
 
+    <p-toast key="a"></p-toast>
     <div class="ui-g-12">
 
 
@@ -26,7 +27,7 @@
                             <div class="ui-inputgroup">
                                 <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Normal Values<i
                     style="color: red">*</i></span>
-                                <input type="text" name="normalvalue" [(ngModel)]="normalvalue.normalvalueName" pInputText />
+                                <input type="text" (keypress)="numberOnly($event)" name="normalvalue" [(ngModel)]="normalvalue.normalvalueName" pInputText />
                             </div>
                         </div>
                     </div>
