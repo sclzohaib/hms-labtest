@@ -48,7 +48,7 @@ export class LabtestComponent implements OnInit {
   getDepartment() {
     this.departments = [];
     this._addService.getDepartment().subscribe(dept => {
-      console.log(dept);
+      // console.log(dept);
       dept.map(d => {
         this.departments.push({
           label: d.departmentName,
@@ -60,7 +60,7 @@ export class LabtestComponent implements OnInit {
   getSubTest() {
     this.subTest = [];
     this._addService.getSubtest().subscribe(res => {
-      console.log("=======>", res);
+      // console.log("=======>", res);
       res.map(s => {
         this.subTest.push({
           label: s.subtestName,
@@ -113,7 +113,7 @@ export class LabtestComponent implements OnInit {
   showSelectedDept() {
     this.deptName = this.departmentName.departmentName;
     this.reportObj.departmentName = this.deptName;
-    console.log("haan bhai men select hogyaaaaa haaaan", this.deptName);
+    // console.log("haan bhai men select hogyaaaaa haaaan", this.deptName);
   }
 
 
@@ -149,7 +149,7 @@ export class LabtestComponent implements OnInit {
     // this.reportObj.departmentName = this.departmentName.departmentName;
     // this.reportObj.labtestName = this.labtestName;
     this._addService.postSampleReport(this.reportObj).subscribe(res=>{
-        console.log("================================="+res)
+        // console.log("================================="+res)
         this.generateReport = [];
         this.departmentName.departmentName = "";
         this.deptName = "";
@@ -159,13 +159,13 @@ export class LabtestComponent implements OnInit {
         summary: "Added Succesfully"
       });
     }), error => {
-      console.log(error);
+      // console.log(er/ror);
       this.messageService.add({
         severity: "error",
         summary: "Error Found"
       });
     }
-    console.log(this.reportObj);
+    // console.log(this.reportObj);
   }
 
   backToShowReport(){

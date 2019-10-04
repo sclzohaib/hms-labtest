@@ -37,14 +37,14 @@ export class HmsLandingPageComponent implements OnInit {
   }
 
     console(v1,v2){
-      console.log(v1,v2)
+      // console.log(v1,v2)
     }
 
   check(uname: string, p: string) {
     // var output = this.service.checkUserandPass(uname, p);
     this.service.checkUserandPass(uname, p).subscribe(
       res => {
-        console.log('toker', res);
+        // console.log('toker', res);
          var getType = res.result.userType.toUpperCase();
 
         if (getType == "OPD" || getType=="PHARMACY") {
@@ -75,7 +75,7 @@ export class HmsLandingPageComponent implements OnInit {
       },
       error => {
         this.showErrorMessage = true;
-        console.log(error);
+        // console.log(error);
        this.errorMethod("Not Authorized")
       }
     );

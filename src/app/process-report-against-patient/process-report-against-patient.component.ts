@@ -58,7 +58,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
     this.labTestId = this.patientData.labtestId;
     this.patientName = this.patientData.name;
     this.age = this.patientData.age
-    console.log("Shared Service", this.labTestId)
+    // console.log("Shared Service", this.labTestId)
 
   }
 
@@ -84,7 +84,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
   getReports() {
     this.reports = [];
     this._addService.getAllCreatedReports().subscribe(rep => {
-      console.log(rep);
+      // console.log(rep);
       rep.map(e => {
         this.reports.push({
           label: e.reportName,
@@ -109,10 +109,10 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
 
   indexPakro(v: any) {
 
-    console.log(this.patientReportDetails[v]);
+    // console.log(this.patientReportDetails[v]);
   }
   onKey(event, v: any) {
-    console.log(this.patientReportDetails[v]);
+    // console.log(this.patientReportDetails[v]);
   }
 
 
@@ -187,7 +187,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
     // this.onAfterPrint(event);
     popupWin.document.close();
      this._addService.UpdateLabTestStatusOfPatient(this.labTestId).subscribe((res=>{
-      console.log(res);
+      // console.log(res);
       this.messageService.add({
         severity:'success',
         summary:'Print SucessFull'

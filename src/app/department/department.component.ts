@@ -29,7 +29,7 @@ export class DepartmentComponent implements OnInit {
       this.heading = "EDIT DEPARMENT";
       // if (this.department.departmentName != undefined) {
         if (this.editDepartment.departmentName != "") {
-          console.log("======================>", this.editDepartment);
+          // console.log("======================>", this.editDepartment);
           this.department.departmentName = this.editDepartment.departmentName;
 
       }

@@ -24,20 +24,20 @@ export class ReportTableComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
 
     // this.labtestName = changes.labtestName.currentValue;
-    console.log(changes)
+    // console.log(changes)
     this.cols = [
       {field : 'subtestName',header:'Subtests'},
       {field : 'normalvalueName',header:'Normal Values'},
       {field : 'unitName',header:'Unit Names'}
     ]
 
-    console.log("===============>",this.generateReport);
+    // console.log("===============>",this.generateReport);
   }
 
 
   ngOnInit() {
-    console.log("================>",this.sendReport)
-    console.log(this.deptName)
+    // console.log("================>",this.sendReport)
+    // console.log(this.deptName)
   }
 
 }

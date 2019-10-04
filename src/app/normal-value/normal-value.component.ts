@@ -29,14 +29,14 @@ export class NormalValueComponent implements OnInit {
 
     }
     else if (value == "edit") {
-      console.log("============>", this.normalvalue);
+      // console.log("============>", this.normalvalue);
       this.display = true;
       this.heading = "EDIT NORMAL VALUE";
 
       // if(this.normalvalue.normalvalueName!=undefined){
 
         if (this.editnormalValue.normalvalueName != "") {
-          console.log("======================>", this.normalvalue);
+          // console.log("======================>", this.normalvalue);
 
           this.normalvalue.normalvalueName = this.editnormalValue.normalvalueName;
         // }

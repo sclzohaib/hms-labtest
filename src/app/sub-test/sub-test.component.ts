@@ -29,19 +29,19 @@ export class SubTestComponent implements OnInit {
       this.heading = "ADD SUBTEST";
       this.subtestObj.subtestName = "";
     } else if (value == "edit") {
-      console.log("============>", this.editSubtest);
+      // console.log("============>", this.editSubtest);
       this.display = true;
       this.heading = "EDIT SUBTEST";
       // if (this.subtestObj.subtestName != undefined) {
         if (this.editSubtest.subtestName != "") {
-          console.log("======================>", this.editSubtest);
+          // console.log("======================>", this.editSubtest);
           this.subtestObj.subtestName = this.editSubtest.subtestName;
         }
       // }
     }
   }
   saveSubtest(value) {
-    console.log(value);
+    // console.log(value);
     if (this.checkAction == "add") {
       this._addserivice.addSubtest(value).subscribe(res => {
         this.valueChange.emit();
@@ -68,7 +68,7 @@ export class SubTestComponent implements OnInit {
     } else if (this.checkAction == "edit") {
       let id = this.editSubtest.id;
       this.editSubtest.subtestName = this.subtestObj.subtestName;
-      console.log("this is updtaed subtest", this.subtestObj);
+      // console.log("this is updtaed subtest", this.subtestObj);
       this._addserivice.editSubtest(id, value).subscribe(res => {
         this.valueChange.emit();
         this.messageservice.add({

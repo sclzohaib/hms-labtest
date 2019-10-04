@@ -45,7 +45,7 @@ export class AddLabtestformComponent implements OnInit {
     this.loader = true;
 
    // this.test.category = this.selectedCity1;
-    console.log(this.test);
+    
 
     this.labservice.postlabtest(this.test).subscribe(
   
@@ -65,11 +65,11 @@ export class AddLabtestformComponent implements OnInit {
           detail: Object.keys(d)[0]
         });
       }
-        console.log(d);
+       
       },
       error => {
         this.loader = false;
-        console.log(error);
+      
       }
     );
   }

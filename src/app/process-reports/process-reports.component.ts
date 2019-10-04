@@ -56,7 +56,7 @@ export class ProcessReportsComponent implements OnInit {
       }
       this.empty = true
       this.pateintDetails = [];
-      console.log(response);
+      // console.log(response);
       response.map(value => {
         this.pateintDetails.push({
           labtestId: value.id,

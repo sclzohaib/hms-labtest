@@ -36,7 +36,7 @@ export class UnitComponent implements OnInit {
     }
     else if(value == "edit")
     {
-      console.log('============>',this.editUnittest);
+      // console.log('============>',this.editUnittest);
       this.display = true;
       this.heading = 'EDIT UNIT';
 
@@ -44,7 +44,7 @@ export class UnitComponent implements OnInit {
 
         if (this.editUnittest.unitName != "")
         {
-          console.log('======================>', this.editUnittest);
+          // console.log('======================>', this.editUnittest);
           this.unit.unitName = this.editUnittest.unitName;
         }
       // }
