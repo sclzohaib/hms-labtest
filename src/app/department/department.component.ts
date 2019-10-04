@@ -1,6 +1,7 @@
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { Department } from "./Department";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-department",
@@ -16,7 +17,7 @@ export class DepartmentComponent implements OnInit {
   checkAction;
   @Output() updatedDeptName = new EventEmitter();
 
-  constructor(private _addService: AddReportDataService) {}
+  constructor(private _addService: AddReportDataService,private messageservice:MessageService) {}
 
   ngOnInit() {}
 
@@ -42,14 +43,50 @@ export class DepartmentComponent implements OnInit {
   saveDepartment(value) {
     if (this.checkAction == "add") {
       this._addService.addDepartment(value).subscribe(res => {
+
         this.valueChange.emit();
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "Department  successfully added!"
+        });
         console.log(res);
+      },error=>{
+        this.messageservice.add({
+          key:'a',   
+          severity: "danger",
+          summary: "error",
+          detail: "something went wrong!"
+        });
+      
+
+
+
       });
     } else if (this.checkAction == "edit") {
       let id = this.editDepartment.id;
       this._addService.editDepartment(id, value).subscribe(response => {
         this.valueChange.emit();
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "department successfully edited!"
+        });
         console.log(response);
+      },
+      error=>{
+
+        this.messageservice.add({
+          key:'a',
+          severity: "danger",
+          summary: "error",
+          detail: "Some thing went wrong !"
+        });
+
+
+
       });
     }
   }

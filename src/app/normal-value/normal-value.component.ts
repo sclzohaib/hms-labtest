@@ -1,6 +1,7 @@
 import { AddReportDataService } from "./../Services/add-report-data.service";
 import { NormalValue } from "./NormalValue";
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-normal-value",
@@ -15,7 +16,7 @@ export class NormalValueComponent implements OnInit {
   heading;
   checkAction;
 
-  constructor(private _addService: AddReportDataService) { }
+  constructor(private _addService: AddReportDataService,private messageservice:MessageService) { }
 
   ngOnInit() { }
   showDialog(value: any) {
@@ -45,17 +46,60 @@ export class NormalValueComponent implements OnInit {
 
   }
   saveNormalvalue(value) {
+    
     if (this.checkAction == "add") {
       this._addService.addNormalValues(value).subscribe(res => {
         this.valueChange.emit();
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "normal value successfully added!"
+
+        });
         console.log(res);
+      },error=>{
+        this.messageservice.add({
+          key:'a',
+          severity: "error",
+          summary: "error occured",
+          detail: "something went wrong!"
+
+        });
+
+
       });
     } else if (this.checkAction == "edit") {
       let id = this.editnormalValue.id;
       this._addService.editNormalvalue(id, value).subscribe(response => {
         this.valueChange.emit();
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "normal value successfully edited!"
+
+        });
+
         console.log(response);
+      },error=>{
+
+        this.messageservice.add({
+          key:'a',
+          severity: "error",
+          summary: "error occured",
+          detail: "something went wrong!"
+
+        });
       });
     }
   }
+  numberOnly(event): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode < 44)) {
+      return false;
+    }
+    return true;
+  }
+
 }

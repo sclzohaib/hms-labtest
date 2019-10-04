@@ -2,6 +2,7 @@ import { AddReportDataService } from "./../Services/add-report-data.service";
 import { Unit } from "./Unit";
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { EmitterVisitorContext } from '@angular/compiler';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: "app-unit",
@@ -17,7 +18,7 @@ export class UnitComponent implements OnInit {
   checkAction;
 
 
-  constructor(private _addService: AddReportDataService) { }
+  constructor(private _addService: AddReportDataService,private messageservice:MessageService) { }
 
   ngOnInit() {
 
@@ -57,16 +58,56 @@ export class UnitComponent implements OnInit {
     {
       this._addService.addUnits(value).subscribe((res => {
         console.log("this is the response", res)
+        this.messageservice.add({
+          key:'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "Unit  successfully added!"
+
+        });
         this.valueChange.emit();
-      }));
+      }),error=>{
+        this.messageservice.add({
+          key:'a',
+          severity: "error",
+          summary: "Error occured",
+          detail: "something went wrong!"
+
+        });
+       
+
+
+
+
+
+      });
     }
     else if(this.checkAction == "edit")
     {
       let id = this.editUnittest.id;
         this._addService.editUnit(id,value).subscribe((res=>{
             console.log("=====>",res);
+            this.messageservice.add({
+              key:'a',
+              severity: "success",
+              summary: "Succesfully",
+              detail: "Unit  successfully edited!"
+    
+            });
+
             this.valueChange.emit();
-        }))
+        }),error=>{
+
+          this.messageservice.add({
+            key:'a',
+            severity: "error",
+            summary: "Error occured",
+            detail: "something went wrong!"
+  
+          });
+        
+
+        })
     }
 
   }
