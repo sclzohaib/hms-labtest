@@ -122,29 +122,31 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
       patientId: parseInt(this.id),
       reportId: this.reportId,
       remarks: this.remarks,
+      labTestName: this.reportName,
       patientReportDetails: this.patientReportDetails
 
     }
+    console.log(object);
     this._addService
       .postReportAgainstPatient(object)
       .subscribe(res => {
         this.enablePrintButton = false;
         if (res) {
           this.isReportSelect = false;
-           this.messageService.add({
+          this.messageService.add({
             severity: "success",
             summary: "Report posted sucessfully",
             detail: "Go to go"
           });
-          
+
         }
 
-      },error=>{
-          this.messageService.add({
-            severity: "error",
-            summary: "Failed",
-            detail: "Try Again"
-          });
+      }, error => {
+        this.messageService.add({
+          severity: "error",
+          summary: "Failed",
+          detail: "Try Again"
+        });
       });
 
     this.isReportSelect = false;
@@ -155,7 +157,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
 
   populateReport() {
     this.patientReportDetails = [];
-    this.remarks  = "";
+    this.remarks = "";
     this.selectedReport.reportDetailsList.map((value => {
       this.fillCols();
       this.patientReportDetails.push(value);
@@ -171,7 +173,7 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
     // window.print();
     let printContents, popupWin;
     printContents = document.getElementById('print-section').innerHTML;
-    popupWin = window.open('','window.location.href','top=0,left=0,height=100%,width=auto');
+    popupWin = window.open('', 'window.location.href', 'top=0,left=0,height=100%,width=auto');
     popupWin.document.open();
     popupWin.document.write(`
       <html>
@@ -186,23 +188,23 @@ export class ProcessReportAgainstPatientComponent implements OnInit {
     );
     // this.onAfterPrint(event);
     popupWin.document.close();
-     this._addService.UpdateLabTestStatusOfPatient(this.labTestId).subscribe((res=>{
+    this._addService.UpdateLabTestStatusOfPatient(this.labTestId).subscribe((res => {
       // console.log(res);
       this.messageService.add({
-        severity:'success',
-        summary:'Print SucessFull'
+        severity: 'success',
+        summary: 'Print SucessFull'
       })
       this.enablePrintButton = true;
-    }),error=>{
-      
+    }), error => {
+
       this.messageService.add({
-        severity:'error',
-        summary:'Failed'
+        severity: 'error',
+        summary: 'Failed'
       })
       this.enablePrintButton = false;
     }
     )
-    
+
   }
 
 }

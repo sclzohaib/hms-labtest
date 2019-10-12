@@ -19,6 +19,7 @@ export class ProcessReportsComponent implements OnInit {
   // @Output()data = new EventEmitter();
   // data;
   data;
+  msg:Boolean = false;
 
   constructor(private router: Router, private _adService: AddReportDataService,private sharedService:SharedService) { }
 
@@ -51,9 +52,15 @@ export class ProcessReportsComponent implements OnInit {
   getLabTestProcessPatients() {
     this._adService.getAllPateints().subscribe(response => {
     
-      if(response.length){
+      if(response.length>0){
+        this.empty = false;
+        this.msg = false;
+      }
+      else{
+        this.msg = true;
         this.empty = false;
       }
+    
     
       this.pateintDetails = [];
       // console.log(response);

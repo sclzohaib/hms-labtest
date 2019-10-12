@@ -44,16 +44,25 @@ export class SubTestComponent implements OnInit {
     // console.log(value);
     if (this.checkAction == "add") {
       this._addserivice.addSubtest(value).subscribe(res => {
-        this.valueChange.emit();
-        this.messageservice.add({
-          key:'a',
-          severity: "success",
-          summary: "Succesfully",
-          detail: "subtest  successfully added!"
-
-        });
-      
-        console.log("this is the response", res);
+        if(res=="SUCCESSFULL"){
+          this.valueChange.emit();
+          this.messageservice.add({
+            key: 'a',
+            severity: "success",
+            summary: "Succesfully",
+            detail: "subtest  successfully added!"
+          });
+          console.log("this is the response", res);
+        }
+        else if(res=="DUPLICATE"){
+          this.messageservice.add({
+            key: 'a',
+            severity: "warn",
+            summary: "Duplicate",
+            detail: "Already Present"
+          });
+        }
+       
       },error=>{
         this.messageservice.add({
           key:'a',
@@ -69,7 +78,7 @@ export class SubTestComponent implements OnInit {
       let id = this.editSubtest.id;
       this.editSubtest.subtestName = this.subtestObj.subtestName;
       // console.log("this is updtaed subtest", this.subtestObj);
-      this._addserivice.editSubtest(id, value).subscribe(res => {
+      this._addserivice.editSubtest(id, value.toLowerCase()).subscribe(res => {
         this.valueChange.emit();
         this.messageservice.add({
         key:'a',
