@@ -1,48 +1,78 @@
-<span class="ui-inputgroup"><a><i (click)="showDialog('add')" class="pi pi-plus"
-      style="margin-left: 10px;font-size: 30px;color:#479761;cursor: pointer"></i></a>
-  <i class="pi pi-cog" (click)="showDialog('edit')" style="font-size: 30px;color:#479761;cursor: pointer"></i></span>
+<span class="ui-inputgroup"><a><i (click)="showDialog('add')"
+      class="pi pi-plus"
+      style="font-size: 30px;color:#479761;cursor: pointer"></i></a>
+  <i class="pi pi-cog"
+    (click)="showDialog('edit')"
+    style="font-size: 30px;color:#479761;cursor: pointer"></i></span>
 
-<p-dialog header="" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }" [minX]="70" [style]="{ float: 'top', 'overflow-wrap': 'break-word' }" style="overflow-wrap: break-word"
-    [positionTop]="null" [maximizable]="true" [baseZIndex]="10000" [closeOnEscape]="true" [closable]="true">
+<p-dialog header=""
+  [(visible)]="display"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '920px', minWidth: '200px', position: 'absolute' }"
+  [minX]="70"
+  [style]="{ float: 'top', 'overflow-wrap': 'break-word' }"
+  style="overflow-wrap: break-word"
+  [positionTop]="null"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [closeOnEscape]="true"
+  [closable]="true">
 
-    <p-toast key="a"></p-toast>
-    <div class="ui-g-12">
+  <p-toast key="a"></p-toast>
+  <div class="ui-g-12">
 
 
-        <p-card header={{heading}} [style]="{
+    <p-card header={{heading}}
+      [style]="{
      width: '100%',
      'font-size': '20px',
      'text-align': 'center',
      color: '#479761'
    }">
-            <div class="ui-g ui-fluid">
-                <hr style="height:2px;width:100%;background-color:#479761;" />
-                <form style="width:100%;" #myForm="ngForm" (ngSubmit)="saveNormalvalue(normalvalue);myForm.resetForm();">
+      <div class="ui-g ui-fluid">
+        <hr style="height:2px;width:100%;background-color:#479761;" />
+        <form style="width:100%;"
+          #myForm="ngForm"
+          (ngSubmit)="saveNormalvalue(normalvalue);myForm.resetForm();">
 
-                    <!--Normal Values Field-->
+          <!--Normal Values Field-->
 
-                    <div class="ui-g">
-                        <div class="ui-md-2 ui-lg-2"></div>
-                        <div class="ui-md-8 ui-lg-8 ui-sm-12">
-                            <div class="ui-inputgroup">
-                                <span class="ui-inputgroup-addon" style="width:45%;font-size:15px;">Normal Values<i
-                    style="color: red">*</i></span>
-                                <input type="text" (keypress)="numberOnly($event)" name="normalvalue" [(ngModel)]="normalvalue.normalvalueName" pInputText />
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <p-footer>
-                        <button type="submit" class="backBtnStyle" pButton icon="pi pi-check" label="Save"></button>
-                        <button type="button" style="margin-left:10px" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
-                    </p-footer>
-
-                </form>
-
+          <div class="ui-g">
+            <div class="ui-md-2 ui-lg-2"></div>
+            <div class="ui-md-8 ui-lg-8 ui-sm-12">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"
+                  style="width:45%;font-size:15px;">Normal Values<i style="color: red">*</i></span>
+                <input type="text"
+                  name="normalvalue"
+                  [(ngModel)]="normalvalue.normalvalueName"
+                  pInputText />
+              </div>
             </div>
-        </p-card>
-    </div>
+          </div>
+
+
+
+          <p-footer>
+            <button type="submit"
+              class="backBtnStyle"
+              pButton
+              icon="pi pi-check"
+              label="Save"></button>
+            <button type="button"
+              style="margin-left:10px"
+              pButton
+              icon="pi pi-close"
+              (click)="display=false"
+              label="Cancel"
+              class="ui-button-secondary"></button>
+          </p-footer>
+
+        </form>
+
+      </div>
+    </p-card>
+  </div>
 
 </p-dialog>

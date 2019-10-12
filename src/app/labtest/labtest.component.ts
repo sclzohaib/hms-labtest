@@ -123,9 +123,18 @@ export class LabtestComponent implements OnInit {
       normalvalueName: this.normalvalueName.normalvalueName,
       unitName: this.unitName.unitName
     };
-
+    //you have to find that the duplicate record is pushing into the array or not
+    let findOrNot = this.generateReport.find(subtest => subtest.subtestName==ReportDetails.subtestName);
+  if(findOrNot!=undefined){
+    //do not push 
+    this.messageService.add({
+      severity:'warn',
+      summary:'Duplicate Values are not allowded',
+      detail:'Try Again'
+    });
+  }
+  else{
     this.generateReport.push(ReportDetails);
-
     // this.reportObj.sendReport = [];
     let postReport = {
       subtest: this.subtestName.subtestName,
@@ -141,6 +150,10 @@ export class LabtestComponent implements OnInit {
     // this.labtestName = "";
     this.subtestName = "";
     this.normalvalueName = "";
+  }
+    
+
+
 
 
   }
