@@ -97,6 +97,7 @@ export class LabtestComponent implements OnInit {
   }
 
   getLabTestsInDropDown(){
+    this.selectedLabTest = [];
     this.labServ.getlabtest().subscribe(data =>{
       data.map(d =>{
         this.selectedLabTest.push({

@@ -45,15 +45,26 @@ export class DepartmentComponent implements OnInit {
   saveDepartment(value) {
     if (this.checkAction == "add") {
       this._addService.addDepartment(value).subscribe(res => {
-
-        this.valueChange.emit();
-        this.messageservice.add({
-          key: 'a',
-          severity: "success",
-          summary: "Succesfully",
-          detail: "Department  successfully added!"
-        });
-        console.log(res);
+        if(res!="DUPLICATE"){
+          this.valueChange.emit();
+          this.messageservice.add({
+            key: 'a',
+            severity: "success",
+            summary: "Succesfully",
+            detail: "Department  successfully added!"
+          });
+          console.log(res);
+        }
+        else if(res=="DUPLICATE"){
+          this.valueChange.emit();
+          this.messageservice.add({
+            key: 'a',
+            severity: "warn",
+            summary: "Duplicate",
+            detail: "Department  already present!"
+          });
+        }
+        
       }, error => {
         this.messageservice.add({
           key: 'a',
