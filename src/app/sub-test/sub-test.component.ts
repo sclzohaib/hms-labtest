@@ -29,6 +29,7 @@ export class SubTestComponent implements OnInit {
       this.heading = "ADD SUBTEST";
       this.subtestObj.subtestName = "";
     } else if (value == "edit") {
+      if (this.editSubtest.normalvalueName != "" || this.editSubtest.normalvalueName != undefined) {
       // console.log("============>", this.editSubtest);
       this.display = true;
       this.heading = "EDIT SUBTEST";
@@ -38,6 +39,7 @@ export class SubTestComponent implements OnInit {
           this.subtestObj.subtestName = this.editSubtest.subtestName;
         }
       // }
+      }
     }
   }
   saveSubtest(value) {
@@ -78,7 +80,7 @@ export class SubTestComponent implements OnInit {
       let id = this.editSubtest.id;
       this.editSubtest.subtestName = this.subtestObj.subtestName;
       // console.log("this is updtaed subtest", this.subtestObj);
-      this._addserivice.editSubtest(id, value.toLowerCase()).subscribe(res => {
+      this._addserivice.editSubtest(id, value).subscribe(res => {
         this.valueChange.emit();
         this.messageservice.add({
         key:'a',

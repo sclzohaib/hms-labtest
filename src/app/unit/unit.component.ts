@@ -18,63 +18,61 @@ export class UnitComponent implements OnInit {
   checkAction;
 
 
-  constructor(private _addService: AddReportDataService,private messageservice:MessageService) { }
+  constructor(private _addService: AddReportDataService, private messageservice: MessageService) { }
 
   ngOnInit() {
 
   }
 
 
-  showDialog(value:any) {
+  showDialog(value: any) {
     this.checkAction = value;
 
-    if(value =='add'){
+    if (value == 'add') {
       this.display = true;
       this.heading = 'ADD UNIT';
       this.unit.unitName = "";
 
     }
-    else if(value == "edit")
-    {
-      // console.log('============>',this.editUnittest);
-      this.display = true;
-      this.heading = 'EDIT UNIT';
+    else if (value == "edit") {
+      if (this.editUnittest.normalvalueName != "" || this.editUnittest.normalvalueName != undefined) {
+        // console.log('============>',this.editUnittest);
+        this.display = true;
+        this.heading = 'EDIT UNIT';
 
-      // if(this.unit.unitName!=undefined){
+        // if(this.unit.unitName!=undefined){
 
-        if (this.editUnittest.unitName != "")
-        {
+        if (this.editUnittest.unitName != "") {
           // console.log('======================>', this.editUnittest);
           this.unit.unitName = this.editUnittest.unitName;
         }
-      // }
-
+        // }
+      }
     }
 
   }
 
   saveUnit(value) {
-    if(this.checkAction == "add")
-    {
+    if (this.checkAction == "add") {
       this._addService.addUnits(value).subscribe((res => {
         console.log("this is the response", res)
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "success",
           summary: "Succesfully",
           detail: "Unit  successfully added!"
 
         });
         this.valueChange.emit();
-      }),error=>{
+      }), error => {
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "error",
           summary: "Error occured",
           detail: "something went wrong!"
 
         });
-       
+
 
 
 
@@ -82,32 +80,31 @@ export class UnitComponent implements OnInit {
 
       });
     }
-    else if(this.checkAction == "edit")
-    {
+    else if (this.checkAction == "edit") {
       let id = this.editUnittest.id;
-        this._addService.editUnit(id,value).subscribe((res=>{
-            console.log("=====>",res);
-            this.messageservice.add({
-              key:'a',
-              severity: "success",
-              summary: "Succesfully",
-              detail: "Unit  successfully edited!"
-    
-            });
+      this._addService.editUnit(id, value).subscribe((res => {
+        console.log("=====>", res);
+        this.messageservice.add({
+          key: 'a',
+          severity: "success",
+          summary: "Succesfully",
+          detail: "Unit  successfully edited!"
 
-            this.valueChange.emit();
-        }),error=>{
+        });
 
-          this.messageservice.add({
-            key:'a',
-            severity: "error",
-            summary: "Error occured",
-            detail: "something went wrong!"
-  
-          });
-        
+        this.valueChange.emit();
+      }), error => {
 
-        })
+        this.messageservice.add({
+          key: 'a',
+          severity: "error",
+          summary: "Error occured",
+          detail: "something went wrong!"
+
+        });
+
+
+      })
     }
 
   }

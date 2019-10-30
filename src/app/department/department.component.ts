@@ -17,23 +17,25 @@ export class DepartmentComponent implements OnInit {
   checkAction;
   @Output() updatedDeptName = new EventEmitter();
 
-  constructor(private _addService: AddReportDataService,private messageservice:MessageService) {}
+  constructor(private _addService: AddReportDataService, private messageservice: MessageService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   showDialog(value: any) {
     this.checkAction = value;
 
     if (value == "edit") {
-      this.display = true;
-      this.heading = "EDIT DEPARMENT";
-      // if (this.department.departmentName != undefined) {
+      if (this.editDepartment.normalvalueName != "" || this.editDepartment.normalvalueName != undefined) {
+        this.display = true;
+        this.heading = "EDIT DEPARMENT";
+        // if (this.department.departmentName != undefined) {
         if (this.editDepartment.departmentName != "") {
           // console.log("======================>", this.editDepartment);
           this.department.departmentName = this.editDepartment.departmentName;
-
+        }
       }
-    } else if (value == "add") {
+    } 
+    else if (value == "add") {
       this.heading = "ADD DEPARTMENT";
       this.department.departmentName = "";
       this.display = true;
@@ -46,20 +48,20 @@ export class DepartmentComponent implements OnInit {
 
         this.valueChange.emit();
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "success",
           summary: "Succesfully",
           detail: "Department  successfully added!"
         });
         console.log(res);
-      },error=>{
+      }, error => {
         this.messageservice.add({
-          key:'a',   
+          key: 'a',
           severity: "danger",
           summary: "error",
           detail: "something went wrong!"
         });
-      
+
 
 
 
@@ -69,25 +71,25 @@ export class DepartmentComponent implements OnInit {
       this._addService.editDepartment(id, value).subscribe(response => {
         this.valueChange.emit();
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "success",
           summary: "Succesfully",
           detail: "department successfully edited!"
         });
         console.log(response);
       },
-      error=>{
+        error => {
 
-        this.messageservice.add({
-          key:'a',
-          severity: "danger",
-          summary: "error",
-          detail: "Some thing went wrong !"
+          this.messageservice.add({
+            key: 'a',
+            severity: "danger",
+            summary: "error",
+            detail: "Some thing went wrong !"
+          });
+
+
+
         });
-
-
-
-      });
     }
   }
 }

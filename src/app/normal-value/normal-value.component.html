@@ -52,22 +52,28 @@
             </div>
           </div>
 
-
-
-          <p-footer>
-            <button type="submit"
-              class="backBtnStyle"
-              pButton
-              icon="pi pi-check"
-              label="Save"></button>
-            <button type="button"
-              style="margin-left:10px"
-              pButton
-              icon="pi pi-close"
-              (click)="display=false"
-              label="Cancel"
-              class="ui-button-secondary"></button>
-          </p-footer>
+ <div class="ui-g-12">
+   <p-footer>
+     <div class="ui-lg-4 ui-lg-offset-4">
+       <!-- Submit button -->
+       <button type="submit"
+         class="backBtnStyle"
+         pButton
+         icon="pi pi-check"
+         label="Save"></button>
+     </div>
+     <!-- Close button -->
+     <div class="ui-lg-4  ui-lg-offset-4">
+       <button type="button"
+         pButton
+         icon="pi pi-close"
+         
+         (click)="display=false"
+         label="Cancel"
+         class="ui-button-secondary"></button>
+     </div>
+   </p-footer>
+ </div>
 
         </form>
 

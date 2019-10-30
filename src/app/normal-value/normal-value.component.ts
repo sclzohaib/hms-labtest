@@ -16,7 +16,7 @@ export class NormalValueComponent implements OnInit {
   heading;
   checkAction;
 
-  constructor(private _addService: AddReportDataService,private messageservice:MessageService) { }
+  constructor(private _addService: AddReportDataService, private messageservice: MessageService) { }
 
   ngOnInit() { }
   showDialog(value: any) {
@@ -28,39 +28,46 @@ export class NormalValueComponent implements OnInit {
       this.normalvalue.normalvalueName = "";
 
     }
-    else if (value == "edit") {
-      // console.log("============>", this.normalvalue);
-      this.display = true;
-      this.heading = "EDIT NORMAL VALUE";
 
-      // if(this.normalvalue.normalvalueName!=undefined){
+
+    else if (value == "edit") {
+      if (this.editnormalValue.normalvalueName != "" || this.editnormalValue.normalvalueName != undefined) {
+
+        // console.log("============>", this.normalvalue);
+        this.display = true;
+        this.heading = "EDIT NORMAL VALUE";
+
+        // if(this.normalvalue.normalvalueName!=undefined){
 
         if (this.editnormalValue.normalvalueName != "") {
           // console.log("======================>", this.normalvalue);
 
           this.normalvalue.normalvalueName = this.editnormalValue.normalvalueName;
-        // }
+          // }
+        }
       }
 
     }
 
+
+
   }
   saveNormalvalue(value) {
-    
+
     if (this.checkAction == "add") {
       this._addService.addNormalValues(value).subscribe(res => {
         this.valueChange.emit();
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "success",
           summary: "Succesfully",
           detail: "normal value successfully added!"
 
         });
         console.log(res);
-      },error=>{
+      }, error => {
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "error",
           summary: "error occured",
           detail: "something went wrong!"
@@ -74,7 +81,7 @@ export class NormalValueComponent implements OnInit {
       this._addService.editNormalvalue(id, value).subscribe(response => {
         this.valueChange.emit();
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "success",
           summary: "Succesfully",
           detail: "normal value successfully edited!"
@@ -82,10 +89,10 @@ export class NormalValueComponent implements OnInit {
         });
 
         console.log(response);
-      },error=>{
+      }, error => {
 
         this.messageservice.add({
-          key:'a',
+          key: 'a',
           severity: "error",
           summary: "error occured",
           detail: "something went wrong!"
