@@ -6,6 +6,8 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';                 //api
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NoopInterceptor } from './request.intercept';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -78,7 +80,11 @@ import { ExternalLinkDirective } from './hms-landing-page/external-link.directiv
 
     //  AccordionModule
   ],
-  providers: [MessageService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NoopInterceptor,
+    multi: true
+  },MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

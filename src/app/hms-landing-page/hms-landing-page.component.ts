@@ -112,19 +112,7 @@ export class HmsLandingPageComponent implements OnInit {
  
 
 
-  // goToOpd() {
-  //   setTimeout(() => {
-  //     window.location.href = "http://localhost:8080/mainscreen"
-  //   }, 1000);
-  // }
-
-
   
-  // goToPharmacy() {
-  //   setTimeout(() => {
-  //     window.location.href = "http://localhost:8081/sales"
-  //   }, 1000);
-  // }
 
   goToLab() {
     setTimeout(() => {
@@ -132,48 +120,6 @@ export class HmsLandingPageComponent implements OnInit {
     }, 1000);
   }
 
-  // check(uname: string, p: string) {
-    
-  //   this.service.checkUserandPass(uname, p).subscribe(
-  //     res => {
-  //       console.log('toker', res);
-  //       sessionStorage.setItem('token', res.result.token);
-  //        this.token = sessionStorage.setItem('token', res.result.token);
-  //        this.userName = sessionStorage.setItem('username', res.result.username);
-  //        this.userType = sessionStorage.setItem('userType', res.result.userType);
-  //        this.getType = sessionStorage.getItem('userType').toUpperCase();
-
-  //       this.succesMethod();
-  //       this.goToLabApplication();
-
-  //     },
-  //     error => {
-  //       console.log(error);
-  //       this.messageService.add({
-  //         severity: 'error',
-  //         summary: 'Service Message',
-  //         detail: 'Wrong username and password'
-  //       });
-  //     }
-  //   );
-  // }
-
-  // succesMethod() {
-    
-  //   this.messageService.add({
-  //     severity: 'success',
-  //     summary: 'Service Message',
-  //     detail: 'Login Succesful'
-  //   });
-  // }
-
-
-  // goToLabApplication() {
-  //   setTimeout(() => {
-  //     this.router.navigate(['/showOrProcessReports'])
-  //   }, 1000);
-  // }
- 
 
 
 }

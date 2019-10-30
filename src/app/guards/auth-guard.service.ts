@@ -20,12 +20,13 @@ export class AuthGuardService implements CanActivate{
     if (sessionStorage.getItem('token') != null) {
       return true;
     } else {
-      
       this.errorMethod("Session Expired Please Login Again")
       this.router.navigate(['']);
       return false;
     }
   }
+
+
   errorMethod(msg: String) {
     this.messageService.add({
       severity: 'error',
