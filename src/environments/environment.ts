@@ -10,11 +10,11 @@ export const environment = {
   // opdUrl: 'http://localhost:8080/',
   // labUrl: 'http://localhost:8081/',
   // pharmacyUrl: 'http://localhost:8082/'
-  tokenURL: 'http://localhost:8444/',
-  baseurl: 'http://localhost:8446/',
-  opdUrl: 'http://localhost:8444/',
-  labUrl: 'http://localhost:8446/',
-  pharmacyUrl: 'http://localhost:8447/'
+  tokenURL: 'https://localhost:8444/',
+  baseurl: 'https://localhost:8446/',
+  opdUrl: 'https://localhost:8444/',
+  labUrl: 'https://localhost:8446/',
+  pharmacyUrl: 'https://localhost:8447/'
 };
 
 /*
