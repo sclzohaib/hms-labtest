@@ -8,7 +8,6 @@ import { Observable, Observer } from 'rxjs';
 })
 export class AddReportDataService {
 
-  tokenUrl = 'http://localhost:8080/';
   constructor(private http: HttpClient) {
 
   }
